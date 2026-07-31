@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motor Insurance Advisory - HelloCustomer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+    <header class="bg-blue-600 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold tracking-tight">HelloCustomer</a>
+            <div class="text-sm flex gap-4">
+                <span>📞 9618328100</span>
+                <span>✉️ evergreenservices9@gmail.com</span>
+                <a href="/admin" class="bg-blue-700 px-3 py-1 rounded font-medium hover:bg-blue-800 transition">Portal Login</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-4 py-10">
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-8">
+            <span class="text-xs bg-blue-100 text-blue-700 font-bold px-2 py-1 rounded uppercase">Dedicated Campaign Page</span>
+            <h2 class="text-3xl font-bold text-slate-900 mt-2 mb-2">Motor & Vehicle Insurance</h2>
+            <p class="text-slate-500 mb-6">Quick renewals and comprehensive coverage for car, bike, and commercial vehicles.</p>
+
+            <form id="leadForm" class="space-y-4">
+                <input type="hidden" id="service" value="Motor Insurance">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Full Name</label>
+                        <input type="text" id="name" required class="w-full border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Email Address</label>
+                        <input type="email" id="email" required class="w-full border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Phone Number</label>
+                        <input type="tel" id="phone" value="9618328100" required class="w-full border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">Vehicle Type</label>
+                        <select id="subService" class="w-full border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="Car Insurance">Car Insurance</option>
+                            <option value="Two Wheeler">Two Wheeler Insurance</option>
+                            <option value="Commercial Vehicle">Commercial Vehicle</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-slate-50 p-4 rounded-lg border border-slate-200">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Pincode</label>
+                        <input type="text" id="pincode" placeholder="e.g. 500001" maxlength="6" class="w-full border rounded px-2 py-1 bg-white">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Area</label>
+                        <input type="text" id="area" readonly placeholder="Auto-populated" class="w-full border rounded px-2 py-1 bg-slate-100 text-slate-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-500 mb-1">District</label>
+                        <input type="text" id="district" readonly placeholder="Auto-populated" class="w-full border rounded px-2 py-1 bg-slate-100 text-slate-600">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-500 mb-1">State</label>
+                        <input type="text" id="state" readonly placeholder="Auto-populated" class="w-full border rounded px-2 py-1 bg-slate-100 text-slate-600">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-1">Vehicle Details / Requirements</label>
+                    <textarea id="message" rows="3" class="w-full border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition">Request Callback</button>
+            </form>
+            <div id="responseMsg" class="mt-4 hidden p-3 rounded-lg text-sm"></div>
+        </div>
+    </main>
+
+    <script>
+        let urlParams = new URLSearchParams(window.location.search);
+        let campaignSource = urlParams.get('ref') || 'motor_direct';
+
+        document.getElementById('pincode').addEventListener('blur', async function() {
+            let pin = this.value.trim();
+            if(pin.length === 6) {
+                try {
+                    let res = await fetch(`https://api.postalpincode.in/pincode/${pin}`);
+                    let data = await res.json();
+                    if(data && data[0].Status === "Success") {
+                        let po = data[0].PostOffice[0];
+                        document.getElementById('area').value = po.Name || '';
+                        document.getElementById('district').value = po.District || '';
+                        document.getElementById('state').value = po.State || '';
+                    }
+                } catch(e) { console.error(e); }
+            }
+        });
+
+        document.getElementById('leadForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            let payload = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                service: document.getElementById('service').value + ' - ' + document.getElementById('subService').value,
+                pincode: document.getElementById('pincode').value,
+                area: document.getElementById('area').value,
+                district: document.getElementById('district').value,
+                state: document.getElementById('state').value,
+                message: document.getElementById('message').value,
+                campaign: campaignSource
+            };
+
+            let res = await fetch('/api/inquire', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            let data = await res.json();
+            let msgBox = document.getElementById('responseMsg');
+            msgBox.classList.remove('hidden');
+            if(data.success) {
+                msgBox.className = "mt-4 p-3 rounded-lg text-sm bg-emerald-50 text-emerald-800 border border-emerald-200";
+                msgBox.innerText = data.message;
+                document.getElementById('leadForm').reset();
+            } else {
+                msgBox.className = "mt-4 p-3 rounded-lg text-sm bg-rose-50 text-rose-800 border border-rose-200";
+                msgBox.innerText = data.message;
+            }
+        });
+    </script>
+</body>
+</html>
