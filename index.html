@@ -1,143 +1,645 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HelloCustomer - Advisory & Services Platform</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HelloCustomer — Health, Term &amp; Accident Insurance Advisory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans">
-    <header class="bg-blue-600 text-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold tracking-tight">HelloCustomer</h1>
-            <div class="text-sm flex gap-4">
-                <span>📞 9618328100</span>
-                <span>✉️ evergreenservices9@gmail.com</span>
-                <a href="/admin" class="bg-blue-700 px-3 py-1 rounded font-medium hover:bg-blue-800 transition">Portal Login</a>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="brand-mark">H</div>
+      <div class="brand-name">HelloCustomer</div>
+    </div>
+    <div class="nav-right">
+      <a class="nav-email" href="mailto:HelloCustomer@gmail.com">HelloCustomer@gmail.com</a>
+      <div class="nav-cta"><a href="#leadForm">Get a Free Callback</a></div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-intro">HelloCustomer Insurance Advisory · Hyderabad · Telangana · Andhra Pradesh</div>
+      <div class="eyebrow">Health · Term · Personal Accident · Maternity</div>
+      <h1>Protect what your family <em>can't afford</em> to lose.</h1>
+      <p class="lead">One honest conversation with a directly IRDA-licensed and authorized advisor to compare health, term, personal accident and maternity plans across every major insurer — clear guidance, no jargon, no sales pressure, no app to download.</p>
+      <div class="trust-row">
+        <div class="trust-item"><span class="dot"></span>Directly IRDA-licensed &amp; authorized</div>
+        <div class="trust-item"><span class="dot"></span>18+ years in insurance</div>
+        <div class="trust-item"><span class="dot"></span>Works with any insurer</div>
+        <div class="trust-item"><span class="dot"></span>Hands-on claims support</div>
+      </div>
+    </div>
+
+    <div class="ledger" id="leadForm">
+      <div class="ledger-head">
+        <div class="ledger-avatar" data-photo-frame>
+          <img src="assets/advisor-photo.jpg" alt="Advisor photo" data-photo-fallback>
+          <div class="fallback">HC</div>
+        </div>
+        <div class="ledger-head-text">
+          <h3>Get your free protection plan</h3>
+          <div class="sub">A licensed advisor gets in touch within one business day.</div>
+        </div>
+      </div>
+
+      <form id="leadFormInner">
+        <div class="field">
+          <label for="name">Full name</label>
+          <input type="text" id="name" required placeholder="e.g. Ramesh Kumar">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="phone">Mobile number</label>
+            <input type="tel" id="phone" required pattern="[0-9]{10}" placeholder="10-digit number">
+          </div>
+          <div class="field">
+            <label for="altPhone">Alternate contact <span class="opt">(optional)</span></label>
+            <input type="tel" id="altPhone" pattern="[0-9]{10}" placeholder="Optional">
+          </div>
+        </div>
+        <div class="check-row">
+          <label class="check-item"><input type="checkbox" id="callAvailable"> This number is reachable via call</label>
+          <label class="check-item"><input type="checkbox" id="whatsappAvailable"> This number is available on WhatsApp</label>
+        </div>
+        <div class="field">
+          <label for="area">Area / city</label>
+          <input type="text" id="area" required placeholder="e.g. AS Rao Nagar">
+        </div>
+
+        <div class="field">
+          <label for="interest">Interested in</label>
+          <select id="interest" required>
+            <option value="">Select one</option>
+            <option>Health Insurance</option>
+            <option>Term Insurance</option>
+            <option>Personal Accident Insurance</option>
+            <option>Maternity Plans</option>
+            <option>Not sure, need guidance</option>
+          </select>
+        </div>
+
+        <!-- ===================== HEALTH INSURANCE BLOCK ===================== -->
+        <div class="conditional-block hidden" id="healthBlock">
+          <div class="block-label">Health insurance details</div>
+          <div class="field">
+            <label for="healthCompany">Preferred company name <span class="opt">(optional)</span></label>
+            <input type="text" id="healthCompany" placeholder="e.g. Star Health, HDFC Ergo — or leave blank for suggestions">
+          </div>
+          <div class="field">
+            <label for="healthType">New policy or porting?</label>
+            <select id="healthType">
+              <option value="">Select one</option>
+              <option value="new">New Policy</option>
+              <option value="porting">Porting from existing policy</option>
+            </select>
+          </div>
+
+          <!-- ---------- NEW POLICY ---------- -->
+          <div class="hidden" id="healthNewFields">
+            <div class="field">
+              <label for="healthPackage">Preferred package</label>
+              <select id="healthPackage">
+                <option value="">Select one</option>
+                <option>Basic (up to ₹5 Lakh)</option>
+                <option>Standard (₹5–15 Lakh)</option>
+                <option>Premium (₹15–50 Lakh)</option>
+                <option>Not sure, need guidance</option>
+              </select>
             </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="healthNewMembers">Number of members</label>
+                <input type="number" id="healthNewMembers" min="1" max="10" placeholder="e.g. 3">
+              </div>
+              <div class="field">
+                <label for="healthCoverType">Cover type</label>
+                <select id="healthCoverType">
+                  <option value="">Select</option>
+                  <option>Family Floater</option>
+                  <option>Individual</option>
+                  <option value="Group">Group (Corporate)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Per-member dynamic fields -->
+            <div class="field hidden" id="memberDetailsWrap">
+              <label>Member details</label>
+              <div id="memberDetailsContainer"></div>
+            </div>
+
+            <!-- Group cover fields -->
+            <div class="hidden" id="groupFields">
+              <div class="field">
+                <label for="groupCompanyName">Company name</label>
+                <input type="text" id="groupCompanyName" placeholder="Your company / employer name">
+              </div>
+              <div class="field">
+                <label for="groupLocation">Location</label>
+                <input type="text" id="groupLocation" placeholder="Office location">
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="groupEmployeeCount">Employee count</label>
+                  <input type="number" id="groupEmployeeCount" min="1" placeholder="Total employees">
+                </div>
+                <div class="field">
+                  <label for="groupSumInsured">Preferable sum insured <span class="opt">(optional)</span></label>
+                  <input type="text" id="groupSumInsured" placeholder="e.g. ₹5,00,000 per employee">
+                </div>
+              </div>
+              <div class="field">
+                <label for="groupEmployeeType">Employee type <span class="opt">(optional)</span></label>
+                <select id="groupEmployeeType">
+                  <option value="">Select</option>
+                  <option>Full Time</option>
+                  <option>Contractor</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Pincode first, then auto-filled location -->
+            <div class="field">
+              <label for="healthPincode">Pincode</label>
+              <input type="text" id="healthPincode" pattern="[0-9]{6}" placeholder="6-digit pincode — area/district/state auto-fill">
+            </div>
+            <div class="field-row three">
+              <div class="field"><label for="healthArea">Area</label><input type="text" id="healthArea" placeholder="Auto-filled"></div>
+              <div class="field"><label for="healthDistrict">District</label><input type="text" id="healthDistrict" placeholder="Auto-filled"></div>
+              <div class="field"><label for="healthState">State</label><input type="text" id="healthState" placeholder="Auto-filled"></div>
+            </div>
+            <div class="field">
+              <label for="healthAddress">Full address</label>
+              <textarea id="healthAddress" placeholder="House no, street, locality"></textarea>
+            </div>
+            <div class="field">
+              <label for="healthTimeline">How soon do you plan to buy?</label>
+              <select id="healthTimeline">
+                <option value="">Select one</option>
+                <option>Immediate</option>
+                <option>Current Month</option>
+                <option>Next Month</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="healthPreferredDate">Preferred date to discuss / purchase <span class="opt">(optional)</span></label>
+              <input type="date" id="healthPreferredDate">
+            </div>
+          </div>
+
+          <!-- ---------- PORTING ---------- -->
+          <div class="hidden" id="healthPortFields">
+            <div class="field">
+              <label for="portCurrentPolicy">Current insurer / policy name</label>
+              <input type="text" id="portCurrentPolicy" placeholder="e.g. Star Health Family Plan">
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="portSumInsured">Current sum insured</label>
+                <input type="text" id="portSumInsured" placeholder="e.g. ₹5,00,000">
+              </div>
+              <div class="field">
+                <label for="portPackage">Package/plan name</label>
+                <input type="text" id="portPackage" placeholder="e.g. Family Health Optima">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="portMembers">Number of members</label>
+                <select id="portMembers">
+                  <option value="">Select</option>
+                  <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="portClaims">Any claims made so far?</label>
+                <select id="portClaims">
+                  <option value="">Select</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+            </div>
+            <div class="field hidden" id="portClaimDetailsField">
+              <label for="portClaimDetails">Claim details <span class="opt">(optional)</span></label>
+              <textarea id="portClaimDetails" placeholder="What was the claim for, approximately when"></textarea>
+            </div>
+            <div class="field">
+              <label for="portReason">Reason for porting</label>
+              <select id="portReason"></select>
+            </div>
+            <div class="field hidden" id="portReasonOtherField">
+              <label for="portReasonOther">Please specify</label>
+              <input type="text" id="portReasonOther" placeholder="Tell us the reason">
+            </div>
+            <div class="field">
+              <label for="portExpiry">Existing policy expiry date</label>
+              <input type="date" id="portExpiry">
+            </div>
+            <div class="field">
+              <label for="portHasDocument">Do you have the existing policy document?</label>
+              <select id="portHasDocument">
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+          </div>
         </div>
-    </header>
 
-    <main class="max-w-3xl mx-auto px-4 py-10">
-        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-8">
-            <h2 class="text-2xl font-semibold mb-2">Request an Advisory Callback</h2>
-            <p class="text-slate-500 mb-6">Fill in your details below. Pincode lookup will auto-fill your regional area details.</p>
+        <!-- ===================== TERM INSURANCE BLOCK ===================== -->
+        <div class="conditional-block hidden" id="termBlock">
+          <div class="block-label">Term insurance details</div>
+          <div class="field">
+            <label for="termCoverage">Coverage amount you're looking for</label>
+            <select id="termCoverage">
+              <option value="">Select one</option>
+              <option>₹50 Lakh</option><option>₹75 Lakh</option><option>₹1 Crore</option>
+              <option>₹1.5 Crore</option><option>₹2 Crore</option><option>₹3 Crore</option>
+              <option>₹5 Crore</option><option>₹10 Crore</option><option>₹25 Crore</option>
+              <option>₹50 Crore</option><option>Not sure, need guidance</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="termReadiness">When will you be ready to buy?</label>
+            <select id="termReadiness">
+              <option value="">Select one</option>
+              <option>Immediate</option><option>Current Month</option><option>Next Month</option><option>Just exploring</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="termFor">Cover for</label>
+            <select id="termFor">
+              <option value="">Select one</option>
+              <option>Only for myself</option><option>Life partner</option><option>Both</option>
+            </select>
+          </div>
 
-            <form id="leadForm" class="space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium mb-1">Full Name</label>
-                        <input type="text" id="name" required class="w-full border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-1">Email Address</label>
-                        <input type="email" id="email" required class="w-full border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500">
-                    </div>
-                </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="termDOB">Date of birth</label>
+              <input type="date" id="termDOB">
+            </div>
+            <div class="field">
+              <label for="termAge">Age <span class="opt">(auto-calculated)</span></label>
+              <input type="number" id="termAge" min="18" max="80" placeholder="Auto-filled from DOB">
+            </div>
+          </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium mb-1">Phone Number</label>
-                        <input type="tel" id="phone" value="9618328100" required class="w-full border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-1">Service Category</label>
-                        <select id="service" class="w-full border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500">
-                            <option value="General Advisory">General Advisory</option>
-                            <option value="Health Insurance">Health Insurance</option>
-                            <option value="Life Insurance">Life Insurance</option>
-                            <option value="Motor Insurance">Motor Insurance</option>
-                            <option value="Loan Processing">Loan Processing</option>
-                        </select>
-                    </div>
-                </div>
+          <div class="field">
+            <label for="termPincode">Pincode</label>
+            <input type="text" id="termPincode" pattern="[0-9]{6}" placeholder="6-digit pincode — area/district/state auto-fill">
+          </div>
+          <div class="field-row three">
+            <div class="field"><label for="termArea">Area</label><input type="text" id="termArea" placeholder="Auto-filled"></div>
+            <div class="field"><label for="termDistrict">District</label><input type="text" id="termDistrict" placeholder="Auto-filled"></div>
+            <div class="field"><label for="termState">State</label><input type="text" id="termState" placeholder="Auto-filled"></div>
+          </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-slate-50 p-4 rounded-lg border border-slate-200">
-                    <div>
-                        <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Pincode</label>
-                        <input type="text" id="pincode" placeholder="e.g. 500001" maxlength="6" class="w-full border rounded px-2 py-1 bg-white">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold uppercase text-slate-500 mb-1">Area</label>
-                        <input type="text" id="area" readonly placeholder="Auto-populated" class="w-full border rounded px-2 py-1 bg-slate-100 text-slate-600">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold uppercase text-slate-500 mb-1">District</label>
-                        <input type="text" id="district" readonly placeholder="Auto-populated" class="w-full border rounded px-2 py-1 bg-slate-100 text-slate-600">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold uppercase text-slate-500 mb-1">State</label>
-                        <input type="text" id="state" readonly placeholder="Auto-populated" class="w-full border rounded px-2 py-1 bg-slate-100 text-slate-600">
-                    </div>
-                </div>
+          <div class="field">
+            <label for="termOccupationType">Employee or Business?</label>
+            <select id="termOccupationType">
+              <option value="">Select</option>
+              <option>Employee</option><option>Business</option><option>Self-Employed / Professional</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="termDuty">Nature of duty</label>
+            <select id="termDuty"><option value="">Select occupation type first</option></select>
+          </div>
+          <div class="field hidden" id="termDutyOtherField">
+            <label for="termDutyOther">Please specify your nature of duty</label>
+            <input type="text" id="termDutyOther" placeholder="Describe your role">
+          </div>
 
-                <div>
-                    <label class="block text-sm font-medium mb-1">Message / Requirements</label>
-                    <textarea id="message" rows="3" class="w-full border rounded-lg px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                </div>
+          <div class="field">
+            <label for="termIncome">Annual income</label>
+            <select id="termIncome">
+              <option value="">Select one</option>
+              <option>Below ₹3 Lakh</option><option>₹3–6 Lakh</option><option>₹6–10 Lakh</option>
+              <option>₹10–25 Lakh</option><option>₹25–50 Lakh</option><option>₹50 Lakh+</option>
+            </select>
+          </div>
+          <div class="field-row three">
+            <div class="field">
+              <label for="termITR">Filing ITR?</label>
+              <select id="termITR"><option value="">Select</option><option>Yes</option><option>No</option></select>
+            </div>
+            <div class="field">
+              <label for="termVaccine">COVID vaccination?</label>
+              <select id="termVaccine"><option value="">Select</option><option>Yes, fully</option><option>Partially</option><option>No</option></select>
+            </div>
+            <div class="field">
+              <label for="termCheckup">Recent medical checkup?</label>
+              <select id="termCheckup"><option value="">Select</option><option>Yes</option><option>No</option></select>
+            </div>
+          </div>
 
-                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition">Submit Request</button>
-            </form>
-            <div id="responseMsg" class="mt-4 hidden p-3 rounded-lg text-sm"></div>
+          <div class="field">
+            <label for="termSmoker">Are you a smoker?</label>
+            <select id="termSmoker"><option value="">Select</option><option>Yes</option><option>No</option></select>
+          </div>
+          <div class="field-row hidden" id="termSmokeFields">
+            <div class="field">
+              <label for="termSmokeFreq">Frequency</label>
+              <select id="termSmokeFreq"><option value="">Select</option><option>Daily</option><option>Monthly</option></select>
+            </div>
+            <div class="field">
+              <label for="termSmokeQty">Quantity (cigarettes)</label>
+              <input type="number" id="termSmokeQty" min="0" placeholder="e.g. 5">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="termExisting">Do you already have a term insurance policy?</label>
+            <select id="termExisting">
+              <option value="">Select</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </div>
+          <div class="field-row hidden" id="termExistingFields">
+            <div class="field">
+              <label for="termExistingCompany">Which company?</label>
+              <input type="text" id="termExistingCompany" placeholder="e.g. HDFC Life">
+            </div>
+            <div class="field">
+              <label for="termExistingSum">Sum insured taken</label>
+              <input type="text" id="termExistingSum" placeholder="e.g. ₹1 Crore">
+            </div>
+          </div>
         </div>
-    </main>
 
-    <script>
-        let currentCampaign = 'direct';
-        window.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const refCampaign = urlParams.get('ref');
-            if (refCampaign) currentCampaign = refCampaign;
-        });
+        <div class="field">
+          <label for="callback">Best time to call</label>
+          <select id="callback" required>
+            <option value="">Select one</option>
+            <option>Morning (9–12)</option>
+            <option>Afternoon (12–4)</option>
+            <option>Evening (4–8)</option>
+            <option>Anytime</option>
+          </select>
+        </div>
 
-        document.getElementById('pincode').addEventListener('blur', async function() {
-            const pin = this.value.trim();
-            if(pin.length === 6) {
-                try {
-                    let res = await fetch(`https://api.postalpincode.in/pincode/${pin}`);
-                    let data = await res.json();
-                    if(data && data[0].Status === "Success") {
-                        let postOffice = data[0].PostOffice[0];
-                        document.getElementById('area').value = postOffice.Name || '';
-                        document.getElementById('district').value = postOffice.District || '';
-                        document.getElementById('state').value = postOffice.State || '';
-                    }
-                } catch(e) { console.error("Pincode fetch failed", e); }
-            }
-        });
+        <button type="submit" class="submit-btn" id="submitBtn">Request my free call back</button>
+        <div class="fine-print">By submitting, you agree to be contacted regarding this enquiry.</div>
+      </form>
+    </div>
+  </div>
+</section>
 
-        document.getElementById('leadForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const payload = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                service: document.getElementById('service').value,
-                pincode: document.getElementById('pincode').value,
-                area: document.getElementById('area').value,
-                district: document.getElementById('district').value,
-                state: document.getElementById('state').value,
-                message: document.getElementById('message').value,
-                campaign: currentCampaign
-            };
+<section class="banner">
+  <div class="wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#3D0F16" stroke-width="2"><path d="M12 2 20 6v6c0 5.5-3.5 9-8 10-4.5-1-8-4.5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+    I am directly IRDA-licensed and authorized, and work with all health insurance companies — not tied to any one insurer. Before you take any decision, please reach us once.
+  </div>
+</section>
 
-            const res = await fetch('/api/inquire', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-            const data = await res.json();
-            const msgBox = document.getElementById('responseMsg');
-            msgBox.classList.remove('hidden');
-            if(data.success) {
-                msgBox.className = "mt-4 p-3 rounded-lg text-sm bg-emerald-50 text-emerald-800 border border-emerald-200";
-                msgBox.innerText = data.message;
-                document.getElementById('leadForm').reset();
-            } else {
-                msgBox.className = "mt-4 p-3 rounded-lg text-sm bg-rose-50 text-rose-800 border border-rose-200";
-                msgBox.innerText = data.message;
-            }
-        });
-    </script>
+<section class="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="profile-frame" data-photo-frame>
+        <img src="assets/advisor-photo.jpg" alt="HelloCustomer advisor" data-photo-fallback>
+        <div class="fallback">
+          <div class="initials">HC</div>
+          <small>Photo not yet added —<br>see assets/README.md</small>
+        </div>
+      </div>
+      <div class="profile-caption">Directly IRDA-Licensed &amp; Authorized Advisor</div>
+    </div>
+    <div class="about-copy">
+      <div class="eyebrow">About your advisor</div>
+      <h2>18+ years of helping Hyderabad, Telangana &amp; Andhra Pradesh families choose insurance with confidence.</h2>
+      <p>HelloCustomer is built around a simple idea: insurance decisions are too important to be left to a five-minute app flow. I am directly IRDA-licensed and authorized, and I work with all health insurance companies — so a recommendation is never limited to a single insurer's tie-up.</p>
+      <p>Over 18+ years, that's meant late-evening calls to explain a claim rejection risk before it happens, home visits for senior citizens who find apps confusing, and personally handling claims — staying on the phone with hospital TPA desks so families don't have to. I handle claims directly and give the best possible support at every step, not just at the time of sale.</p>
+      <p>Before you take any decision on a policy, please reach us once — a second opinion costs nothing and can save you from a plan that looks good on paper but falls short when it matters.</p>
+      <div class="stat-row">
+        <div class="stat-card"><div class="num">18+</div><div class="label">Years in insurance</div></div>
+        <div class="stat-card"><div class="num">1000+</div><div class="label">Families advised</div></div>
+        <div class="stat-card"><div class="num">100%</div><div class="label">Personal claim support</div></div>
+        <div class="stat-card"><div class="num">Any Insurer</div><div class="label">No restriction, full comparison</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="corp-vs-ind">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">For health insurance specifically</div>
+      <h2>Corporate vs Individual health insurance.</h2>
+      <p>Most working professionals already have a corporate (employer/group) health policy. Here's why relying on it alone is often risky.</p>
+    </div>
+    <div class="compare-table">
+      <div class="compare-row head"><div>What matters</div><div>Corporate / Group Policy</div><div>Individual Policy</div></div>
+      <div class="compare-row"><div>Continues if you change jobs</div><div class="no">Ends when you leave</div><div class="yes">Stays with you for life</div></div>
+      <div class="compare-row"><div>Sum insured &amp; features</div><div class="no">Fixed by employer, rarely enough</div><div class="yes">You choose what fits your family</div></div>
+      <div class="compare-row"><div>Covers parents</div><div class="no">Often excluded or limited</div><div class="yes">Can be included as needed</div></div>
+      <div class="compare-row"><div>Waiting period on pre-existing conditions</div><div class="yes">Usually waived</div><div class="no">Applies unless ported</div></div>
+      <div class="compare-row"><div>Control over renewal &amp; continuity</div><div class="no">Employer decides insurer/terms</div><div class="yes">Fully in your control</div></div>
+      <div class="compare-row"><div>Best used as</div><div>A helpful first layer</div><div>Your permanent, portable safety net</div></div>
+    </div>
+    <div class="example-box">
+      <div class="tag">Real-world example — Health Insurance</div>
+      <p>Priya, 32, works in Hyderabad and had only her employer's ₹3 lakh group health cover. When her father needed emergency angioplasty costing ₹5.5 lakh, the group policy — which didn't cover parents at all — left the family to arrange the full amount themselves. A separate individual family floater plan, costing a fraction of that gap, would have covered it entirely.</p>
+    </div>
+  </div>
+</section>
+
+<section class="media">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Photos &amp; videos</div>
+      <h2>See HelloCustomer in action.</h2>
+      <p>This section is ready for your real photos and videos — swap each placeholder tile below with a client meeting photo, an office photo, or a short explainer video. See <code>assets/README.md</code> for exact filenames.</p>
+    </div>
+    <div class="media-grid">
+      <div class="media-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#9a8f7d" stroke-width="1.5"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3"/><path d="M9 6l1-2h4l1 2"/></svg>Add photo: client consultation</div>
+      <div class="media-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#9a8f7d" stroke-width="1.5"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3"/><path d="M9 6l1-2h4l1 2"/></svg>Add photo: office / AS Rao Nagar</div>
+      <div class="media-tile video"><svg viewBox="0 0 24 24" fill="none" stroke="#9a8f7d" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg>
+        <!-- Replace this tile with a <video> tag or an embedded YouTube/Vimeo iframe -->
+        Add video: 60-second introduction
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">What families say</div>
+      <h2>Real feedback across Telangana &amp; Andhra Pradesh.</h2>
+      <p>A sample of the kind of feedback HelloCustomer aims for — <em>replace with your own verified customer reviews before publishing.</em></p>
+    </div>
+    <div class="tabs" id="testiTabs">
+      <button class="tab-btn active" data-tab="health">Health Insurance (40+)</button>
+      <button class="tab-btn" data-tab="term">Term Insurance (20+)</button>
+      <button class="tab-btn" data-tab="accident">Personal Accident (5+)</button>
+    </div>
+    <div id="testiPanels"></div>
+  </div>
+</section>
+
+<section class="products">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Know your options</div>
+      <h2>Health, term &amp; personal accident — explained simply.</h2>
+      <p>Three different covers, three different jobs. Here's what each one actually protects, and the common types you'll be choosing between.</p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card health">
+        <svg class="product-icon" viewBox="0 0 40 40"><path d="M20 34s-14-8.6-14-18.4C6 9.6 10.3 6 15 6c2.6 0 4.6 1.2 5 3 .4-1.8 2.4-3 5-3 4.7 0 9 3.6 9 9.6C34 25.4 20 34 20 34z" fill="none" stroke="#6E7F5C" stroke-width="2"/><path d="M13 18h5l2-5 3 9 2-4h4" fill="none" stroke="#6E7F5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="product-tag">Health Insurance</span>
+        <h3>Covers hospitalisation &amp; treatment costs</h3>
+        <p>Pays for hospital bills, surgeries, and medical treatment so a health emergency doesn't drain your savings. Includes individual, family floater, and group/corporate options.</p>
+        <div class="types-label">Common types</div>
+        <ul>
+          <li>Individual health plan</li>
+          <li>Family floater (shared cover for the whole family)</li>
+          <li>Group / corporate health plan</li>
+          <li>Senior citizen health plan</li>
+          <li>Critical illness cover</li>
+          <li>Maternity &amp; newborn cover</li>
+          <li>Top-up / super top-up plans</li>
+        </ul>
+      </div>
+      <div class="product-card term">
+        <svg class="product-icon" viewBox="0 0 40 40"><path d="M20 5 33 10v10c0 10-6 16.5-13 19-7-2.5-13-9-13-19V10z" fill="none" stroke="#8a6a1f" stroke-width="2"/><path d="M14 20l4 4 8-9" fill="none" stroke="#8a6a1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="product-tag">Term Insurance</span>
+        <h3>Replaces your income for your family</h3>
+        <p>A pure life cover that pays a lump sum to your family if you're not around — cover available from ₹50 Lakh up to ₹50 Crore depending on your needs.</p>
+        <div class="types-label">Common types</div>
+        <ul>
+          <li>Level term plan (fixed cover)</li>
+          <li>Increasing / decreasing cover plan</li>
+          <li>Term plan with return of premium</li>
+          <li>Term plan with riders (critical illness, accidental death)</li>
+          <li>Group term plan (via employer)</li>
+        </ul>
+      </div>
+      <div class="product-card accident">
+        <svg class="product-icon" viewBox="0 0 40 40"><circle cx="20" cy="20" r="15" fill="none" stroke="#6B1F2B" stroke-width="2"/><path d="M12 20h6l2-6 3 12 2-6h5" fill="none" stroke="#6B1F2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="product-tag">Personal Accident Insurance</span>
+        <h3>Covers injury, disability &amp; accidental death</h3>
+        <p>Pays out for accidental death, permanent or partial disability, and related medical costs — a low-cost add-on to your protection plan.</p>
+        <div class="types-label">Common types</div>
+        <ul>
+          <li>Individual personal accident cover</li>
+          <li>Family personal accident cover</li>
+          <li>Group personal accident (via employer)</li>
+          <li>Disability &amp; income-protection riders</li>
+        </ul>
+      </div>
+    </div>
+    <div class="example-box">
+      <div class="tag">Real-world example — Term Insurance</div>
+      <p>Suresh, 38, in Vijayawada is the sole earner for his family with an outstanding ₹40 lakh home loan and had no term cover at all. A ₹1 Crore term plan, costing less than ₹15,000 a year, would ensure his family could clear the loan and maintain their lifestyle if anything happened to him — instead of losing the home along with him.</p>
+    </div>
+  </div>
+</section>
+
+<section class="benefits" id="benefitsSection">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Why it's worth having</div>
+      <h2>30+ benefits, explained by category.</h2>
+      <p>A quick reference to how each type of cover works in practice — not just the headline pitch.</p>
+    </div>
+    <div class="tabs" id="benefitTabs">
+      <button class="tab-btn active" data-tab="health">Health Insurance</button>
+      <button class="tab-btn" data-tab="term">Term Insurance</button>
+      <button class="tab-btn" data-tab="accident">Personal Accident</button>
+      <button class="tab-btn" data-tab="general">Insurance, Generally</button>
+    </div>
+    <div id="benefitPanels"></div>
+    <div class="benefit-more">…and many more benefits and customisations available depending on your age, income, and family situation — reach us once and we'll show you exactly what fits you best.</div>
+  </div>
+</section>
+
+<section class="compare">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Why not just buy an app?</div>
+      <h2>What a local advisor actually gets you.</h2>
+    </div>
+    <div class="compare-table">
+      <div class="compare-row head"><div>What matters</div><div>HelloCustomer</div><div>Insurance apps</div></div>
+      <div class="compare-row"><div>Compares plans across insurers</div><div class="yes">Yes, unbiased — any insurer</div><div class="no">Only their own tie-ups</div></div>
+      <div class="compare-row"><div>Explains fine print &amp; exclusions</div><div class="yes">In person, in your language</div><div class="no">Buried in PDF terms</div></div>
+      <div class="compare-row"><div>Helps at claim time</div><div class="yes">Hands-on, personally handled</div><div class="no">Ticket-based support</div></div>
+      <div class="compare-row"><div>Understands local hospital network</div><div class="yes">Locality-specific guidance</div><div class="no">Generic pan-India list</div></div>
+      <div class="compare-row"><div>Reviews your cover as life changes</div><div class="yes">Annual check-ins</div><div class="no">No follow-up</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">How it works</div>
+      <h2>From enquiry to policy, in four steps.</h2>
+      <p>No branch visits required unless you want one.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">01</div><h4>Free consultation</h4><p>We understand your family, income, and existing cover.</p></div>
+      <div class="step"><div class="num">02</div><h4>Compare plans</h4><p>You receive a side-by-side comparison across multiple insurers, in plain language.</p></div>
+      <div class="step"><div class="num">03</div><h4>Apply &amp; issue</h4><p>We handle the paperwork and medical tests, and track your policy to issuance.</p></div>
+      <div class="step"><div class="num">04</div><h4>Ongoing support</h4><p>Annual reviews, renewal reminders, and hands-on help if you ever need to claim.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Common questions</div>
+      <h2>Answers by category.</h2>
+    </div>
+    <div class="tabs" id="faqTabs">
+      <button class="tab-btn active" data-tab="general">General</button>
+      <button class="tab-btn" data-tab="health">Health Insurance</button>
+      <button class="tab-btn" data-tab="term">Term Insurance</button>
+      <button class="tab-btn" data-tab="accident">Personal Accident</button>
+    </div>
+    <div id="faqPanels"></div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <h2>Your family's protection shouldn't wait.</h2>
+    <p>Fill in the form above — it takes two minutes, costs nothing, and a licensed advisor will get back to you. Before you decide anything, reach us once.</p>
+    <div class="email-line">HelloCustomer@gmail.com</div>
+    <a class="btn-primary" href="#leadForm" onclick="document.getElementById('name').focus()">Get my free call back</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <div>© 2026 HelloCustomer · Insurance Advisory</div>
+    <a href="mailto:HelloCustomer@gmail.com">HelloCustomer@gmail.com</a>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="thankYouModal">
+  <div class="modal-card">
+    <div class="modal-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+    <h3>Thank you!</h3>
+    <p id="thankYouText">Your request has been received. A licensed advisor will get back to you at the time you selected.</p>
+    <button class="modal-close" id="modalCloseBtn">Close</button>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
 </body>
 </html>

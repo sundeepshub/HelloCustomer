@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HelloCustomer — Health, Term &amp; Accident Insurance Advisory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --maroon:#6B1F2B; --maroon-deep:#3D0F16; --gold:#C9A24B; --gold-soft:#E4CD8F;
+  --pearl:#F5EFE4; --ink:#241512; --sage:#6E7F5C; --white:#FFFDF8; --radius:2px;
+  --shadow: 0 18px 40px rgba(61,15,22,0.18);
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{ font-family:'Inter', sans-serif; color:var(--ink); background:var(--pearl); line-height:1.55; -webkit-font-smoothing:antialiased; }
+h1,h2,h3,h4{font-family:'Roboto Slab', serif; font-weight:700; line-height:1.18; letter-spacing:-0.01em;}
+.mono{font-family:'IBM Plex Mono', monospace;}
+a{color:inherit;}
+img,svg{max-width:100%; display:block;}
+.wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+.eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); text-wrap:balance; }
+@media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important;} }
+
+/* ===== Header ===== */
+header{ position:sticky; top:0; z-index:50; background:var(--maroon-deep); border-bottom:1px solid rgba(201,162,75,0.25); }
+.nav{display:flex; align-items:center; justify-content:space-between; padding:14px 28px; max-width:1180px; margin:0 auto; gap:16px; flex-wrap:wrap;}
+.brand{display:flex; align-items:center; gap:10px; color:var(--white);}
+.brand-mark{ width:34px; height:34px; border:1.5px solid var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Roboto Slab',serif; font-weight:700; color:var(--gold); font-size:15px; flex:none; }
+.brand-name{font-family:'Roboto Slab', serif; font-weight:700; font-size:17px; letter-spacing:0.01em;}
+.nav-right{display:flex; align-items:center; gap:18px;}
+.nav-email{font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:rgba(245,239,228,0.75); text-decoration:none;}
+.nav-cta a{ display:inline-flex; align-items:center; gap:8px; background:var(--gold); color:var(--maroon-deep); font-weight:600; font-size:14px; padding:10px 18px; border-radius:var(--radius); text-decoration:none; white-space:nowrap; transition:transform .15s ease, box-shadow .15s ease; }
+.nav-cta a:hover{transform:translateY(-1px); box-shadow:0 6px 18px rgba(201,162,75,0.35);}
+
+/* ===== Hero ===== */
+.hero{ background: radial-gradient(ellipse at 15% -10%, rgba(201,162,75,0.18), transparent 55%), linear-gradient(180deg, var(--maroon-deep) 0%, var(--maroon) 100%); color:var(--white); padding:60px 0 56px; position:relative; overflow:hidden; }
+.hero::after{ content:""; position:absolute; inset:0; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 26px); pointer-events:none; }
+.hero-grid{ display:grid; grid-template-columns: 1.05fr 0.95fr; gap:56px; align-items:start; position:relative; z-index:1; }
+.hero-intro{font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(245,239,228,0.55); margin-bottom:10px;}
+.hero h1{ font-size:38px; color:var(--white); margin:14px 0 18px; max-width:560px; text-wrap:balance; }
+.hero h1 em{ font-style:normal; color:var(--gold-soft); }
+.hero p.lead{ font-size:15.5px; color:rgba(245,239,228,0.82); max-width:480px; margin-bottom:24px; }
+.trust-row{ display:flex; flex-wrap:wrap; gap:16px 20px; margin-top:8px; }
+.trust-item{ display:flex; align-items:center; gap:9px; font-size:13px; color:rgba(245,239,228,0.9); white-space:nowrap; }
+.trust-item .dot{ width:6px; height:6px; border-radius:50%; background:var(--gold); flex:none; }
+
+/* ===== Trust banner ===== */
+.banner{ background:var(--gold); color:var(--maroon-deep); padding:14px 0; }
+.banner .wrap{display:flex; align-items:center; gap:12px; font-size:13.5px; font-weight:600; flex-wrap:wrap; justify-content:center; text-align:center;}
+.banner svg{width:18px; height:18px; flex:none;}
+
+/* ===== Ledger form card ===== */
+.ledger{ background:var(--white); border-radius:4px; box-shadow:var(--shadow); padding:28px 28px 24px; width:100%; }
+.ledger-head{ display:flex; align-items:center; gap:14px; border-bottom:1px dashed rgba(107,31,43,0.25); padding-bottom:16px; margin-bottom:18px; }
+.ledger-avatar{ width:52px; height:52px; border-radius:50%; flex:none; overflow:hidden; border:2px solid var(--gold); position:relative; background:var(--maroon-deep); display:flex; align-items:center; justify-content:center; }
+.ledger-avatar img{width:100%; height:100%; object-fit:cover; display:block;}
+.ledger-avatar .fallback{ color:var(--gold-soft); font-family:'Roboto Slab', serif; font-weight:700; font-size:16px; display:none; }
+.ledger-avatar.no-photo img{display:none;}
+.ledger-avatar.no-photo .fallback{display:flex;}
+.ledger-head-text h3{font-size:18px; color:var(--maroon-deep); line-height:1.25;}
+.ledger-head-text .sub{font-size:12px; color:#7a6f63; margin-top:3px;}
+.field{margin-bottom:14px;}
+.field label{ display:block; font-size:12px; font-weight:600; color:var(--maroon-deep); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.03em; }
+.field label .opt{color:#a89a86; font-weight:400; text-transform:none; letter-spacing:0;}
+.field input, .field select, .field textarea{ width:100%; padding:11px 12px; border:1px solid #ddd3c2; border-radius:2px; font-family:'Inter', sans-serif; font-size:14px; background:#fffdf9; color:var(--ink); }
+.field textarea{resize:vertical; min-height:56px;}
+.field input:focus, .field select:focus, .field textarea:focus{ outline:2px solid var(--maroon); outline-offset:1px; border-color:var(--maroon); }
+.field-row{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+.field-row.three{grid-template-columns:1fr 1fr 1fr;}
+.check-row{ display:flex; flex-direction:column; gap:8px; margin:2px 0 14px; }
+.check-item{ display:flex; align-items:center; gap:8px; font-size:12.5px; color:#5c5145; }
+.check-item input{width:auto;}
+.conditional-block{ border-left:2px solid var(--gold); padding:4px 0 4px 14px; margin:6px 0 18px; background:rgba(201,162,75,0.05); border-radius:0 2px 2px 0; }
+.conditional-block .block-label{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:#8a6a1f; margin:8px 0 10px; }
+.member-card{ border:1px solid #e7ddc9; border-radius:2px; padding:12px; margin-bottom:10px; background:#fffdf9; }
+.member-card .m-title{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--maroon); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.04em;}
+.hidden{display:none !important;}
+.submit-btn{ width:100%; padding:14px; margin-top:6px; background:var(--maroon); color:var(--white); border:none; border-radius:2px; font-weight:600; font-size:15px; cursor:pointer; transition:background .15s ease, transform .15s ease; font-family:'Inter', sans-serif; }
+.submit-btn:hover{background:var(--maroon-deep); transform:translateY(-1px);}
+.submit-btn:disabled{opacity:0.6; cursor:wait;}
+.fine-print{font-size:11px; color:#9a8f80; margin-top:10px; text-align:center;}
+.readonly-hint{background:#f5f1e8;}
+
+/* ===== Section shell ===== */
+section{padding:68px 0;}
+.section-head{max-width:700px; margin-bottom:38px;}
+.section-head.center{margin-left:auto; margin-right:auto; text-align:center;}
+.section-head h2{font-size:28px; margin-top:10px; color:var(--maroon-deep);}
+.section-head p{color:#5c5145; font-size:15px; margin-top:12px;}
+
+/* ===== About ===== */
+.about{background:var(--white); border-top:1px solid #eae1cf; border-bottom:1px solid #eae1cf;}
+.about-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:50px; align-items:center;}
+.profile-frame{ position:relative; border-radius:6px; overflow:hidden; aspect-ratio:4/5; background:linear-gradient(160deg, var(--maroon-deep), var(--maroon)); display:flex; align-items:center; justify-content:center; border:3px solid var(--gold); }
+.profile-frame img{width:100%; height:100%; object-fit:cover; display:block;}
+.profile-frame .fallback{ display:none; flex-direction:column; align-items:center; gap:10px; color:var(--gold-soft); text-align:center; padding:20px; }
+.profile-frame .fallback .initials{ width:74px; height:74px; border-radius:50%; border:2px solid var(--gold); display:flex; align-items:center; justify-content:center; font-family:'Roboto Slab', serif; font-weight:700; font-size:26px; }
+.profile-frame .fallback small{font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.05em; opacity:0.8;}
+.profile-frame.no-photo img{display:none;}
+.profile-frame.no-photo .fallback{display:flex;}
+.profile-caption{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--gold); text-align:center; margin-top:12px; }
+.about-copy p{font-size:14.5px; color:#4a4038; margin-bottom:14px;}
+.about-copy h2{font-size:26px; color:var(--maroon-deep); margin-bottom:16px;}
+.stat-row{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:24px;}
+.stat-card{ border:1px solid #e7ddc9; border-radius:3px; padding:16px 12px; text-align:center; background:var(--pearl); }
+.stat-card .num{font-family:'Roboto Slab', serif; font-weight:700; font-size:20px; color:var(--maroon);}
+.stat-card .label{font-size:11px; color:#7a6f63; margin-top:4px; letter-spacing:0.01em;}
+
+/* ===== Corporate vs Individual ===== */
+.corp-vs-ind{background:var(--pearl);}
+.example-box{ background:var(--white); border:1px solid #e7ddc9; border-left:4px solid var(--gold); border-radius:2px; padding:20px 22px; margin-top:26px; }
+.example-box .tag{font-family:'IBM Plex Mono', monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em; color:#8a6a1f; margin-bottom:8px;}
+.example-box p{font-size:14px; color:#4a4038;}
+
+/* ===== Media placeholders ===== */
+.media{background:var(--white); border-top:1px solid #eae1cf; border-bottom:1px solid #eae1cf;}
+.media-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+.media-tile{ border:1.5px dashed #ddd0b8; border-radius:3px; aspect-ratio:4/3; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; background:var(--pearl); color:#9a8f7d; font-size:12px; text-align:center; padding:10px; }
+.media-tile svg{width:26px; height:26px; opacity:0.6;}
+.media-tile.video{grid-column:span 2;}
+
+/* ===== Testimonials ===== */
+.testimonials{background:var(--maroon-deep); color:var(--white);}
+.testimonials .section-head p{color:rgba(245,239,228,0.75);}
+.testimonials .eyebrow{color:var(--gold-soft);}
+.testimonials .section-head h2{color:var(--white);}
+.testimonials .tab-btn{background:transparent; border-color:rgba(245,239,228,0.25); color:rgba(245,239,228,0.75);}
+.testimonials .tab-btn.active{background:var(--gold); color:var(--maroon-deep); border-color:var(--gold);}
+.testi-mini-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; max-height:640px; overflow-y:auto; padding-right:6px;}
+.testi-mini{ background:rgba(255,253,248,0.06); border:1px solid rgba(245,239,228,0.15); border-radius:2px; padding:14px; }
+.testi-mini .stars{color:var(--gold); font-size:11px; letter-spacing:1px; margin-bottom:6px;}
+.testi-mini p{font-size:12.5px; color:rgba(245,239,228,0.9); margin-bottom:8px; line-height:1.45;}
+.testi-mini .who{font-size:11.5px; color:var(--gold-soft); font-weight:600;}
+.testi-mini .loc{font-size:10.5px; color:rgba(245,239,228,0.55);}
+
+/* ===== Products ===== */
+.products{background:var(--white); border-top:1px solid #eae1cf; border-bottom:1px solid #eae1cf;}
+.product-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;}
+.product-card{ border:1px solid #e7ddc9; border-radius:3px; padding:26px; position:relative; overflow:hidden; }
+.product-card.health{background:linear-gradient(180deg, #FBFAF5, #F5EFE4);}
+.product-card.term{background:linear-gradient(180deg, #FBF7F2, #F5EFE4);}
+.product-card.accident{background:linear-gradient(180deg, #FAF8F6, #F5EFE4);}
+.product-icon{width:34px; height:34px; margin-bottom:14px;}
+.product-tag{ display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:4px 9px; border-radius:2px; margin-bottom:16px; }
+.product-card.health .product-tag{background:rgba(110,127,94,0.14); color:var(--sage);}
+.product-card.term .product-tag{background:rgba(201,162,75,0.18); color:#8a6a1f;}
+.product-card.accident .product-tag{background:rgba(107,31,43,0.1); color:var(--maroon);}
+.product-card h3{font-size:19px; margin-bottom:9px; color:var(--maroon-deep);}
+.product-card p{color:#5c5145; font-size:13.5px; margin-bottom:14px;}
+.product-card .types-label{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:0.05em; text-transform:uppercase; color:#9a8f7d; margin-bottom:8px; }
+.product-card ul{list-style:none;}
+.product-card li{ font-size:13px; color:var(--ink); padding:7px 0 7px 18px; position:relative; border-top:1px solid rgba(107,31,43,0.08); }
+.product-card li:first-child{border-top:none;}
+.product-card li::before{ content:"—"; position:absolute; left:0; color:var(--gold); font-weight:700; }
+
+/* ===== Tabs (Benefits, FAQ, Testimonials) ===== */
+.tabs{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:26px;}
+.tab-btn{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.04em; text-transform:uppercase; padding:10px 16px; border:1px solid #ddd0b8; border-radius:2px; background:var(--white); color:#7a6f63; cursor:pointer; transition:all .15s ease; }
+.tab-btn.active{background:var(--maroon); color:var(--white); border-color:var(--maroon);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+
+/* ===== Benefits ===== */
+.benefits{background:var(--maroon-deep); color:var(--white);}
+.benefits .section-head p{color:rgba(245,239,228,0.75);}
+.benefits .eyebrow{color:var(--gold-soft);}
+.benefits .section-head h2{color:var(--white);}
+.benefits .tab-btn{background:transparent; border-color:rgba(245,239,228,0.25); color:rgba(245,239,228,0.75);}
+.benefits .tab-btn.active{background:var(--gold); color:var(--maroon-deep); border-color:var(--gold);}
+.benefit-intro{font-size:13.5px; color:rgba(245,239,228,0.8); margin-bottom:20px; max-width:720px;}
+.benefit-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:10px 20px;}
+.benefit-item{ display:flex; gap:9px; font-size:13px; color:rgba(245,239,228,0.92); padding:8px 0; border-top:1px solid rgba(245,239,228,0.1); }
+.benefit-item:nth-child(-n+3){border-top:none;}
+.benefit-item .tick{color:var(--gold); flex:none;}
+.benefit-more{margin-top:22px; font-size:13.5px; color:rgba(245,239,228,0.85); border-top:1px dashed rgba(245,239,228,0.25); padding-top:16px;}
+
+/* ===== Why local advisor ===== */
+.compare{background:var(--pearl);}
+.compare-table{background:var(--white); border:1px solid #e7ddc9; border-radius:3px; overflow:hidden;}
+.compare-row{display:grid; grid-template-columns:1.4fr 1fr 1fr; align-items:center;}
+.compare-row > div{padding:16px 20px; font-size:13.5px;}
+.compare-row.head{background:var(--maroon-deep); color:var(--white); font-family:'IBM Plex Mono',monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:0.06em;}
+.compare-row:not(.head){border-top:1px solid #eee3cf;}
+.compare-row .yes{color:var(--sage); font-weight:600;}
+.compare-row .no{color:#a68b7a;}
+
+/* ===== Process ===== */
+.process{background:var(--white);}
+.steps{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+.step{border-left:2px solid var(--gold); padding-left:16px; padding-top:2px;}
+.step .num{font-family:'IBM Plex Mono', monospace; color:var(--maroon); font-size:13px; margin-bottom:8px;}
+.step h4{font-size:16px; color:var(--maroon-deep); margin-bottom:8px;}
+.step p{font-size:13.5px; color:#5c5145;}
+
+/* ===== FAQ ===== */
+.faq{background:var(--white);}
+.faq-list{max-width:760px;}
+.faq-item{border-bottom:1px solid #e7ddc9;}
+.faq-q{ width:100%; text-align:left; background:none; border:none; cursor:pointer; padding:16px 4px; display:flex; justify-content:space-between; align-items:center; font-family:'Roboto Slab', serif; font-size:15.5px; color:var(--maroon-deep); font-weight:600; }
+.faq-q .plus{font-family:'Inter'; font-size:20px; color:var(--gold); transition:transform .2s ease; flex:none; margin-left:12px;}
+.faq-item.open .plus{transform:rotate(45deg);}
+.faq-a{ max-height:0; overflow:hidden; transition:max-height .25s ease; font-size:13.5px; color:#5c5145; padding:0 4px; }
+.faq-item.open .faq-a{max-height:240px; padding-bottom:16px;}
+
+/* ===== Final CTA ===== */
+.final-cta{ background:linear-gradient(135deg, var(--maroon) 0%, var(--maroon-deep) 100%); color:var(--white); text-align:center; }
+.final-cta h2{color:var(--white); font-size:28px; margin-bottom:14px;}
+.final-cta p{color:rgba(245,239,228,0.8); max-width:520px; margin:0 auto 22px;}
+.final-cta .email-line{font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--gold-soft); margin-bottom:26px;}
+.btn-primary{ padding:14px 26px; border-radius:2px; font-weight:600; font-size:14.5px; text-decoration:none; display:inline-flex; align-items:center; gap:8px; background:var(--gold); color:var(--maroon-deep); }
+
+/* ===== Footer ===== */
+footer{background:var(--maroon-deep); color:rgba(245,239,228,0.65); padding:36px 0; font-size:13px;}
+.footer-row{display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; align-items:center;}
+.footer-row a{text-decoration:none; color:rgba(245,239,228,0.85); font-family:'IBM Plex Mono', monospace;}
+
+/* ===== Thank-you modal ===== */
+.modal-overlay{ position:fixed; inset:0; background:rgba(36,21,18,0.55); display:none; align-items:center; justify-content:center; z-index:100; padding:20px; }
+.modal-overlay.show{display:flex;}
+.modal-card{ background:var(--white); border-radius:3px; max-width:420px; width:100%; padding:36px 30px; text-align:center; box-shadow:var(--shadow); }
+.modal-check{ width:56px; height:56px; border-radius:50%; background:var(--sage); margin:0 auto 18px; display:flex; align-items:center; justify-content:center; }
+.modal-check svg{width:26px; height:26px; stroke:var(--white); fill:none; stroke-width:3;}
+.modal-card h3{font-size:21px; color:var(--maroon-deep); margin-bottom:10px;}
+.modal-card p{font-size:14px; color:#5c5145; margin-bottom:22px;}
+.modal-close{ background:var(--maroon); color:var(--white); border:none; padding:11px 22px; border-radius:2px; font-weight:600; font-size:14px; cursor:pointer; }
+
+/* ===== Responsive ===== */
+@media (max-width: 980px){
+  .about-grid{grid-template-columns:1fr;}
+  .profile-frame{max-width:280px; margin:0 auto; aspect-ratio:1/1;}
+  .stat-row{grid-template-columns:1fr 1fr;}
+  .benefit-grid{grid-template-columns:1fr 1fr;}
+  .testi-mini-grid{grid-template-columns:1fr 1fr;}
+  .media-grid{grid-template-columns:1fr 1fr;}
+  .media-tile.video{grid-column:span 2;}
+}
+@media (max-width: 880px){
+  .hero-grid{grid-template-columns:1fr; gap:36px;}
+  .hero h1{font-size:28px;}
+  .hero .eyebrow{font-size:11px; letter-spacing:0.06em;}
+  .product-grid{grid-template-columns:1fr;}
+  .steps{grid-template-columns:1fr 1fr;}
+  .compare-row > div{padding:12px 14px; font-size:12.5px;}
+}
+@media (max-width:520px){
+  .steps{grid-template-columns:1fr;}
+  .field-row, .field-row.three{grid-template-columns:1fr;}
+  .benefit-grid{grid-template-columns:1fr;}
+  .stat-row{grid-template-columns:1fr 1fr;}
+  .testi-mini-grid{grid-template-columns:1fr;}
+  .media-grid{grid-template-columns:1fr;}
+  .media-tile.video{grid-column:span 1;}
+  .ledger{padding:22px 18px 20px;}
+  .hero{padding:44px 0 40px;}
+  section{padding:52px 0;}
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="brand-mark">H</div>
+      <div class="brand-name">HelloCustomer</div>
+    </div>
+    <div class="nav-right">
+      <a class="nav-email" href="mailto:HelloCustomer@gmail.com">HelloCustomer@gmail.com</a>
+      <div class="nav-cta"><a href="#leadForm">Get a Free Callback</a></div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-intro">HelloCustomer Insurance Advisory · Hyderabad · Telangana · Andhra Pradesh</div>
+      <div class="eyebrow">Health · Term · Personal Accident · Maternity</div>
+      <h1>Protect what your family <em>can't afford</em> to lose.</h1>
+      <p class="lead">One honest conversation with a directly IRDA-licensed and authorized advisor to compare health, term, personal accident and maternity plans across every major insurer — clear guidance, no jargon, no sales pressure, no app to download.</p>
+      <div class="trust-row">
+        <div class="trust-item"><span class="dot"></span>Directly IRDA-licensed &amp; authorized</div>
+        <div class="trust-item"><span class="dot"></span>18+ years in insurance</div>
+        <div class="trust-item"><span class="dot"></span>Works with any insurer</div>
+        <div class="trust-item"><span class="dot"></span>Hands-on claims support</div>
+      </div>
+    </div>
+
+    <div class="ledger" id="leadForm">
+      <div class="ledger-head">
+        <div class="ledger-avatar" data-photo-frame>
+          <img src="assets/advisor-photo.jpg" alt="Advisor photo" data-photo-fallback>
+          <div class="fallback">HC</div>
+        </div>
+        <div class="ledger-head-text">
+          <h3>Get your free protection plan</h3>
+          <div class="sub">A licensed advisor gets in touch within one business day.</div>
+        </div>
+      </div>
+
+      <form id="leadFormInner">
+        <div class="field">
+          <label for="name">Full name</label>
+          <input type="text" id="name" required placeholder="e.g. Ramesh Kumar">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="phone">Mobile number</label>
+            <input type="tel" id="phone" required pattern="[0-9]{10}" placeholder="10-digit number">
+          </div>
+          <div class="field">
+            <label for="altPhone">Alternate contact <span class="opt">(optional)</span></label>
+            <input type="tel" id="altPhone" pattern="[0-9]{10}" placeholder="Optional">
+          </div>
+        </div>
+        <div class="check-row">
+          <label class="check-item"><input type="checkbox" id="callAvailable"> This number is reachable via call</label>
+          <label class="check-item"><input type="checkbox" id="whatsappAvailable"> This number is available on WhatsApp</label>
+        </div>
+        <div class="field">
+          <label for="area">Area / city</label>
+          <input type="text" id="area" required placeholder="e.g. AS Rao Nagar">
+        </div>
+
+        <div class="field">
+          <label for="interest">Interested in</label>
+          <select id="interest" required>
+            <option value="">Select one</option>
+            <option>Health Insurance</option>
+            <option>Term Insurance</option>
+            <option>Personal Accident Insurance</option>
+            <option>Maternity Plans</option>
+            <option>Not sure, need guidance</option>
+          </select>
+        </div>
+
+        <!-- ===================== HEALTH INSURANCE BLOCK ===================== -->
+        <div class="conditional-block hidden" id="healthBlock">
+          <div class="block-label">Health insurance details</div>
+          <div class="field">
+            <label for="healthCompany">Preferred company name <span class="opt">(optional)</span></label>
+            <input type="text" id="healthCompany" placeholder="e.g. Star Health, HDFC Ergo — or leave blank for suggestions">
+          </div>
+          <div class="field">
+            <label for="healthType">New policy or porting?</label>
+            <select id="healthType">
+              <option value="">Select one</option>
+              <option value="new">New Policy</option>
+              <option value="porting">Porting from existing policy</option>
+            </select>
+          </div>
+
+          <!-- ---------- NEW POLICY ---------- -->
+          <div class="hidden" id="healthNewFields">
+            <div class="field">
+              <label for="healthPackage">Preferred package</label>
+              <select id="healthPackage">
+                <option value="">Select one</option>
+                <option>Basic (up to ₹5 Lakh)</option>
+                <option>Standard (₹5–15 Lakh)</option>
+                <option>Premium (₹15–50 Lakh)</option>
+                <option>Not sure, need guidance</option>
+              </select>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="healthNewMembers">Number of members</label>
+                <input type="number" id="healthNewMembers" min="1" max="10" placeholder="e.g. 3">
+              </div>
+              <div class="field">
+                <label for="healthCoverType">Cover type</label>
+                <select id="healthCoverType">
+                  <option value="">Select</option>
+                  <option>Family Floater</option>
+                  <option>Individual</option>
+                  <option value="Group">Group (Corporate)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Per-member dynamic fields -->
+            <div class="field hidden" id="memberDetailsWrap">
+              <label>Member details</label>
+              <div id="memberDetailsContainer"></div>
+            </div>
+
+            <!-- Group cover fields -->
+            <div class="hidden" id="groupFields">
+              <div class="field">
+                <label for="groupCompanyName">Company name</label>
+                <input type="text" id="groupCompanyName" placeholder="Your company / employer name">
+              </div>
+              <div class="field">
+                <label for="groupLocation">Location</label>
+                <input type="text" id="groupLocation" placeholder="Office location">
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="groupEmployeeCount">Employee count</label>
+                  <input type="number" id="groupEmployeeCount" min="1" placeholder="Total employees">
+                </div>
+                <div class="field">
+                  <label for="groupSumInsured">Preferable sum insured <span class="opt">(optional)</span></label>
+                  <input type="text" id="groupSumInsured" placeholder="e.g. ₹5,00,000 per employee">
+                </div>
+              </div>
+              <div class="field">
+                <label for="groupEmployeeType">Employee type <span class="opt">(optional)</span></label>
+                <select id="groupEmployeeType">
+                  <option value="">Select</option>
+                  <option>Full Time</option>
+                  <option>Contractor</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Pincode first, then auto-filled location -->
+            <div class="field">
+              <label for="healthPincode">Pincode</label>
+              <input type="text" id="healthPincode" pattern="[0-9]{6}" placeholder="6-digit pincode — area/district/state auto-fill">
+            </div>
+            <div class="field-row three">
+              <div class="field"><label for="healthArea">Area</label><input type="text" id="healthArea" placeholder="Auto-filled"></div>
+              <div class="field"><label for="healthDistrict">District</label><input type="text" id="healthDistrict" placeholder="Auto-filled"></div>
+              <div class="field"><label for="healthState">State</label><input type="text" id="healthState" placeholder="Auto-filled"></div>
+            </div>
+            <div class="field">
+              <label for="healthAddress">Full address</label>
+              <textarea id="healthAddress" placeholder="House no, street, locality"></textarea>
+            </div>
+            <div class="field">
+              <label for="healthTimeline">How soon do you plan to buy?</label>
+              <select id="healthTimeline">
+                <option value="">Select one</option>
+                <option>Immediate</option>
+                <option>Current Month</option>
+                <option>Next Month</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="healthPreferredDate">Preferred date to discuss / purchase <span class="opt">(optional)</span></label>
+              <input type="date" id="healthPreferredDate">
+            </div>
+          </div>
+
+          <!-- ---------- PORTING ---------- -->
+          <div class="hidden" id="healthPortFields">
+            <div class="field">
+              <label for="portCurrentPolicy">Current insurer / policy name</label>
+              <input type="text" id="portCurrentPolicy" placeholder="e.g. Star Health Family Plan">
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="portSumInsured">Current sum insured</label>
+                <input type="text" id="portSumInsured" placeholder="e.g. ₹5,00,000">
+              </div>
+              <div class="field">
+                <label for="portPackage">Package/plan name</label>
+                <input type="text" id="portPackage" placeholder="e.g. Family Health Optima">
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="portMembers">Number of members</label>
+                <select id="portMembers">
+                  <option value="">Select</option>
+                  <option>1</option><option>2</option><option>3</option><option>4</option><option>5+</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="portClaims">Any claims made so far?</label>
+                <select id="portClaims">
+                  <option value="">Select</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </div>
+            </div>
+            <div class="field hidden" id="portClaimDetailsField">
+              <label for="portClaimDetails">Claim details <span class="opt">(optional)</span></label>
+              <textarea id="portClaimDetails" placeholder="What was the claim for, approximately when"></textarea>
+            </div>
+            <div class="field">
+              <label for="portReason">Reason for porting</label>
+              <select id="portReason"></select>
+            </div>
+            <div class="field hidden" id="portReasonOtherField">
+              <label for="portReasonOther">Please specify</label>
+              <input type="text" id="portReasonOther" placeholder="Tell us the reason">
+            </div>
+            <div class="field">
+              <label for="portExpiry">Existing policy expiry date</label>
+              <input type="date" id="portExpiry">
+            </div>
+            <div class="field">
+              <label for="portHasDocument">Do you have the existing policy document?</label>
+              <select id="portHasDocument">
+                <option value="">Select</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===================== TERM INSURANCE BLOCK ===================== -->
+        <div class="conditional-block hidden" id="termBlock">
+          <div class="block-label">Term insurance details</div>
+          <div class="field">
+            <label for="termCoverage">Coverage amount you're looking for</label>
+            <select id="termCoverage">
+              <option value="">Select one</option>
+              <option>₹50 Lakh</option><option>₹75 Lakh</option><option>₹1 Crore</option>
+              <option>₹1.5 Crore</option><option>₹2 Crore</option><option>₹3 Crore</option>
+              <option>₹5 Crore</option><option>₹10 Crore</option><option>₹25 Crore</option>
+              <option>₹50 Crore</option><option>Not sure, need guidance</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="termReadiness">When will you be ready to buy?</label>
+            <select id="termReadiness">
+              <option value="">Select one</option>
+              <option>Immediate</option><option>Current Month</option><option>Next Month</option><option>Just exploring</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="termFor">Cover for</label>
+            <select id="termFor">
+              <option value="">Select one</option>
+              <option>Only for myself</option><option>Life partner</option><option>Both</option>
+            </select>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="termDOB">Date of birth</label>
+              <input type="date" id="termDOB">
+            </div>
+            <div class="field">
+              <label for="termAge">Age <span class="opt">(auto-calculated)</span></label>
+              <input type="number" id="termAge" min="18" max="80" placeholder="Auto-filled from DOB">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="termPincode">Pincode</label>
+            <input type="text" id="termPincode" pattern="[0-9]{6}" placeholder="6-digit pincode — area/district/state auto-fill">
+          </div>
+          <div class="field-row three">
+            <div class="field"><label for="termArea">Area</label><input type="text" id="termArea" placeholder="Auto-filled"></div>
+            <div class="field"><label for="termDistrict">District</label><input type="text" id="termDistrict" placeholder="Auto-filled"></div>
+            <div class="field"><label for="termState">State</label><input type="text" id="termState" placeholder="Auto-filled"></div>
+          </div>
+
+          <div class="field">
+            <label for="termOccupationType">Employee or Business?</label>
+            <select id="termOccupationType">
+              <option value="">Select</option>
+              <option>Employee</option><option>Business</option><option>Self-Employed / Professional</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="termDuty">Nature of duty</label>
+            <select id="termDuty"><option value="">Select occupation type first</option></select>
+          </div>
+          <div class="field hidden" id="termDutyOtherField">
+            <label for="termDutyOther">Please specify your nature of duty</label>
+            <input type="text" id="termDutyOther" placeholder="Describe your role">
+          </div>
+
+          <div class="field">
+            <label for="termIncome">Annual income</label>
+            <select id="termIncome">
+              <option value="">Select one</option>
+              <option>Below ₹3 Lakh</option><option>₹3–6 Lakh</option><option>₹6–10 Lakh</option>
+              <option>₹10–25 Lakh</option><option>₹25–50 Lakh</option><option>₹50 Lakh+</option>
+            </select>
+          </div>
+          <div class="field-row three">
+            <div class="field">
+              <label for="termITR">Filing ITR?</label>
+              <select id="termITR"><option value="">Select</option><option>Yes</option><option>No</option></select>
+            </div>
+            <div class="field">
+              <label for="termVaccine">COVID vaccination?</label>
+              <select id="termVaccine"><option value="">Select</option><option>Yes, fully</option><option>Partially</option><option>No</option></select>
+            </div>
+            <div class="field">
+              <label for="termCheckup">Recent medical checkup?</label>
+              <select id="termCheckup"><option value="">Select</option><option>Yes</option><option>No</option></select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="termSmoker">Are you a smoker?</label>
+            <select id="termSmoker"><option value="">Select</option><option>Yes</option><option>No</option></select>
+          </div>
+          <div class="field-row hidden" id="termSmokeFields">
+            <div class="field">
+              <label for="termSmokeFreq">Frequency</label>
+              <select id="termSmokeFreq"><option value="">Select</option><option>Daily</option><option>Monthly</option></select>
+            </div>
+            <div class="field">
+              <label for="termSmokeQty">Quantity (cigarettes)</label>
+              <input type="number" id="termSmokeQty" min="0" placeholder="e.g. 5">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="termExisting">Do you already have a term insurance policy?</label>
+            <select id="termExisting">
+              <option value="">Select</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </div>
+          <div class="field-row hidden" id="termExistingFields">
+            <div class="field">
+              <label for="termExistingCompany">Which company?</label>
+              <input type="text" id="termExistingCompany" placeholder="e.g. HDFC Life">
+            </div>
+            <div class="field">
+              <label for="termExistingSum">Sum insured taken</label>
+              <input type="text" id="termExistingSum" placeholder="e.g. ₹1 Crore">
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="callback">Best time to call</label>
+          <select id="callback" required>
+            <option value="">Select one</option>
+            <option>Morning (9–12)</option>
+            <option>Afternoon (12–4)</option>
+            <option>Evening (4–8)</option>
+            <option>Anytime</option>
+          </select>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">Request my free call back</button>
+        <div class="fine-print">By submitting, you agree to be contacted regarding this enquiry.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="banner">
+  <div class="wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#3D0F16" stroke-width="2"><path d="M12 2 20 6v6c0 5.5-3.5 9-8 10-4.5-1-8-4.5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+    I am directly IRDA-licensed and authorized, and work with all health insurance companies — not tied to any one insurer. Before you take any decision, please reach us once.
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="profile-frame" data-photo-frame>
+        <img src="assets/advisor-photo.jpg" alt="HelloCustomer advisor" data-photo-fallback>
+        <div class="fallback">
+          <div class="initials">HC</div>
+          <small>Photo not yet added —<br>see assets/README.md</small>
+        </div>
+      </div>
+      <div class="profile-caption">Directly IRDA-Licensed &amp; Authorized Advisor</div>
+    </div>
+    <div class="about-copy">
+      <div class="eyebrow">About your advisor</div>
+      <h2>18+ years of helping Hyderabad, Telangana &amp; Andhra Pradesh families choose insurance with confidence.</h2>
+      <p>HelloCustomer is built around a simple idea: insurance decisions are too important to be left to a five-minute app flow. I am directly IRDA-licensed and authorized, and I work with all health insurance companies — so a recommendation is never limited to a single insurer's tie-up.</p>
+      <p>Over 18+ years, that's meant late-evening calls to explain a claim rejection risk before it happens, home visits for senior citizens who find apps confusing, and personally handling claims — staying on the phone with hospital TPA desks so families don't have to. I handle claims directly and give the best possible support at every step, not just at the time of sale.</p>
+      <p>Before you take any decision on a policy, please reach us once — a second opinion costs nothing and can save you from a plan that looks good on paper but falls short when it matters.</p>
+      <div class="stat-row">
+        <div class="stat-card"><div class="num">18+</div><div class="label">Years in insurance</div></div>
+        <div class="stat-card"><div class="num">1000+</div><div class="label">Families advised</div></div>
+        <div class="stat-card"><div class="num">100%</div><div class="label">Personal claim support</div></div>
+        <div class="stat-card"><div class="num">Any Insurer</div><div class="label">No restriction, full comparison</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="corp-vs-ind">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">For health insurance specifically</div>
+      <h2>Corporate vs Individual health insurance.</h2>
+      <p>Most working professionals already have a corporate (employer/group) health policy. Here's why relying on it alone is often risky.</p>
+    </div>
+    <div class="compare-table">
+      <div class="compare-row head"><div>What matters</div><div>Corporate / Group Policy</div><div>Individual Policy</div></div>
+      <div class="compare-row"><div>Continues if you change jobs</div><div class="no">Ends when you leave</div><div class="yes">Stays with you for life</div></div>
+      <div class="compare-row"><div>Sum insured &amp; features</div><div class="no">Fixed by employer, rarely enough</div><div class="yes">You choose what fits your family</div></div>
+      <div class="compare-row"><div>Covers parents</div><div class="no">Often excluded or limited</div><div class="yes">Can be included as needed</div></div>
+      <div class="compare-row"><div>Waiting period on pre-existing conditions</div><div class="yes">Usually waived</div><div class="no">Applies unless ported</div></div>
+      <div class="compare-row"><div>Control over renewal &amp; continuity</div><div class="no">Employer decides insurer/terms</div><div class="yes">Fully in your control</div></div>
+      <div class="compare-row"><div>Best used as</div><div>A helpful first layer</div><div>Your permanent, portable safety net</div></div>
+    </div>
+    <div class="example-box">
+      <div class="tag">Real-world example — Health Insurance</div>
+      <p>Priya, 32, works in Hyderabad and had only her employer's ₹3 lakh group health cover. When her father needed emergency angioplasty costing ₹5.5 lakh, the group policy — which didn't cover parents at all — left the family to arrange the full amount themselves. A separate individual family floater plan, costing a fraction of that gap, would have covered it entirely.</p>
+    </div>
+  </div>
+</section>
+
+<section class="media">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Photos &amp; videos</div>
+      <h2>See HelloCustomer in action.</h2>
+      <p>This section is ready for your real photos and videos — swap each placeholder tile below with a client meeting photo, an office photo, or a short explainer video. See <code>assets/README.md</code> for exact filenames.</p>
+    </div>
+    <div class="media-grid">
+      <div class="media-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#9a8f7d" stroke-width="1.5"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3"/><path d="M9 6l1-2h4l1 2"/></svg>Add photo: client consultation</div>
+      <div class="media-tile"><svg viewBox="0 0 24 24" fill="none" stroke="#9a8f7d" stroke-width="1.5"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3"/><path d="M9 6l1-2h4l1 2"/></svg>Add photo: office / AS Rao Nagar</div>
+      <div class="media-tile video"><svg viewBox="0 0 24 24" fill="none" stroke="#9a8f7d" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg>
+        <!-- Replace this tile with a <video> tag or an embedded YouTube/Vimeo iframe -->
+        Add video: 60-second introduction
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">What families say</div>
+      <h2>Real feedback across Telangana &amp; Andhra Pradesh.</h2>
+      <p>A sample of the kind of feedback HelloCustomer aims for — <em>replace with your own verified customer reviews before publishing.</em></p>
+    </div>
+    <div class="tabs" id="testiTabs">
+      <button class="tab-btn active" data-tab="health">Health Insurance (40+)</button>
+      <button class="tab-btn" data-tab="term">Term Insurance (20+)</button>
+      <button class="tab-btn" data-tab="accident">Personal Accident (5+)</button>
+    </div>
+    <div id="testiPanels"></div>
+  </div>
+</section>
+
+<section class="products">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Know your options</div>
+      <h2>Health, term &amp; personal accident — explained simply.</h2>
+      <p>Three different covers, three different jobs. Here's what each one actually protects, and the common types you'll be choosing between.</p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card health">
+        <svg class="product-icon" viewBox="0 0 40 40"><path d="M20 34s-14-8.6-14-18.4C6 9.6 10.3 6 15 6c2.6 0 4.6 1.2 5 3 .4-1.8 2.4-3 5-3 4.7 0 9 3.6 9 9.6C34 25.4 20 34 20 34z" fill="none" stroke="#6E7F5C" stroke-width="2"/><path d="M13 18h5l2-5 3 9 2-4h4" fill="none" stroke="#6E7F5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="product-tag">Health Insurance</span>
+        <h3>Covers hospitalisation &amp; treatment costs</h3>
+        <p>Pays for hospital bills, surgeries, and medical treatment so a health emergency doesn't drain your savings. Includes individual, family floater, and group/corporate options.</p>
+        <div class="types-label">Common types</div>
+        <ul>
+          <li>Individual health plan</li>
+          <li>Family floater (shared cover for the whole family)</li>
+          <li>Group / corporate health plan</li>
+          <li>Senior citizen health plan</li>
+          <li>Critical illness cover</li>
+          <li>Maternity &amp; newborn cover</li>
+          <li>Top-up / super top-up plans</li>
+        </ul>
+      </div>
+      <div class="product-card term">
+        <svg class="product-icon" viewBox="0 0 40 40"><path d="M20 5 33 10v10c0 10-6 16.5-13 19-7-2.5-13-9-13-19V10z" fill="none" stroke="#8a6a1f" stroke-width="2"/><path d="M14 20l4 4 8-9" fill="none" stroke="#8a6a1f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="product-tag">Term Insurance</span>
+        <h3>Replaces your income for your family</h3>
+        <p>A pure life cover that pays a lump sum to your family if you're not around — cover available from ₹50 Lakh up to ₹50 Crore depending on your needs.</p>
+        <div class="types-label">Common types</div>
+        <ul>
+          <li>Level term plan (fixed cover)</li>
+          <li>Increasing / decreasing cover plan</li>
+          <li>Term plan with return of premium</li>
+          <li>Term plan with riders (critical illness, accidental death)</li>
+          <li>Group term plan (via employer)</li>
+        </ul>
+      </div>
+      <div class="product-card accident">
+        <svg class="product-icon" viewBox="0 0 40 40"><circle cx="20" cy="20" r="15" fill="none" stroke="#6B1F2B" stroke-width="2"/><path d="M12 20h6l2-6 3 12 2-6h5" fill="none" stroke="#6B1F2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="product-tag">Personal Accident Insurance</span>
+        <h3>Covers injury, disability &amp; accidental death</h3>
+        <p>Pays out for accidental death, permanent or partial disability, and related medical costs — a low-cost add-on to your protection plan.</p>
+        <div class="types-label">Common types</div>
+        <ul>
+          <li>Individual personal accident cover</li>
+          <li>Family personal accident cover</li>
+          <li>Group personal accident (via employer)</li>
+          <li>Disability &amp; income-protection riders</li>
+        </ul>
+      </div>
+    </div>
+    <div class="example-box">
+      <div class="tag">Real-world example — Term Insurance</div>
+      <p>Suresh, 38, in Vijayawada is the sole earner for his family with an outstanding ₹40 lakh home loan and had no term cover at all. A ₹1 Crore term plan, costing less than ₹15,000 a year, would ensure his family could clear the loan and maintain their lifestyle if anything happened to him — instead of losing the home along with him.</p>
+    </div>
+  </div>
+</section>
+
+<section class="benefits" id="benefitsSection">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Why it's worth having</div>
+      <h2>30+ benefits, explained by category.</h2>
+      <p>A quick reference to how each type of cover works in practice — not just the headline pitch.</p>
+    </div>
+    <div class="tabs" id="benefitTabs">
+      <button class="tab-btn active" data-tab="health">Health Insurance</button>
+      <button class="tab-btn" data-tab="term">Term Insurance</button>
+      <button class="tab-btn" data-tab="accident">Personal Accident</button>
+      <button class="tab-btn" data-tab="general">Insurance, Generally</button>
+    </div>
+    <div id="benefitPanels"></div>
+    <div class="benefit-more">…and many more benefits and customisations available depending on your age, income, and family situation — reach us once and we'll show you exactly what fits you best.</div>
+  </div>
+</section>
+
+<section class="compare">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Why not just buy an app?</div>
+      <h2>What a local advisor actually gets you.</h2>
+    </div>
+    <div class="compare-table">
+      <div class="compare-row head"><div>What matters</div><div>HelloCustomer</div><div>Insurance apps</div></div>
+      <div class="compare-row"><div>Compares plans across insurers</div><div class="yes">Yes, unbiased — any insurer</div><div class="no">Only their own tie-ups</div></div>
+      <div class="compare-row"><div>Explains fine print &amp; exclusions</div><div class="yes">In person, in your language</div><div class="no">Buried in PDF terms</div></div>
+      <div class="compare-row"><div>Helps at claim time</div><div class="yes">Hands-on, personally handled</div><div class="no">Ticket-based support</div></div>
+      <div class="compare-row"><div>Understands local hospital network</div><div class="yes">Locality-specific guidance</div><div class="no">Generic pan-India list</div></div>
+      <div class="compare-row"><div>Reviews your cover as life changes</div><div class="yes">Annual check-ins</div><div class="no">No follow-up</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">How it works</div>
+      <h2>From enquiry to policy, in four steps.</h2>
+      <p>No branch visits required unless you want one.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">01</div><h4>Free consultation</h4><p>We understand your family, income, and existing cover.</p></div>
+      <div class="step"><div class="num">02</div><h4>Compare plans</h4><p>You receive a side-by-side comparison across multiple insurers, in plain language.</p></div>
+      <div class="step"><div class="num">03</div><h4>Apply &amp; issue</h4><p>We handle the paperwork and medical tests, and track your policy to issuance.</p></div>
+      <div class="step"><div class="num">04</div><h4>Ongoing support</h4><p>Annual reviews, renewal reminders, and hands-on help if you ever need to claim.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Common questions</div>
+      <h2>Answers by category.</h2>
+    </div>
+    <div class="tabs" id="faqTabs">
+      <button class="tab-btn active" data-tab="general">General</button>
+      <button class="tab-btn" data-tab="health">Health Insurance</button>
+      <button class="tab-btn" data-tab="term">Term Insurance</button>
+      <button class="tab-btn" data-tab="accident">Personal Accident</button>
+    </div>
+    <div id="faqPanels"></div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <h2>Your family's protection shouldn't wait.</h2>
+    <p>Fill in the form above — it takes two minutes, costs nothing, and a licensed advisor will get back to you. Before you decide anything, reach us once.</p>
+    <div class="email-line">HelloCustomer@gmail.com</div>
+    <a class="btn-primary" href="#leadForm" onclick="document.getElementById('name').focus()">Get my free call back</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-row">
+    <div>© 2026 HelloCustomer · Insurance Advisory</div>
+    <a href="mailto:HelloCustomer@gmail.com">HelloCustomer@gmail.com</a>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="thankYouModal">
+  <div class="modal-card">
+    <div class="modal-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+    <h3>Thank you!</h3>
+    <p id="thankYouText">Your request has been received. A licensed advisor will get back to you at the time you selected.</p>
+    <button class="modal-close" id="modalCloseBtn">Close</button>
+  </div>
+</div>
+
+<script>
+/* =========================================================================
+   HelloCustomer — Landing Page Script
+   ========================================================================= */
+
+/* ---- Photo fallback handling (avatar + about profile photo) ---- */
+document.querySelectorAll('[data-photo-fallback]').forEach(img=>{
+  img.addEventListener('error', function(){
+    this.closest('[data-photo-frame]').classList.add('no-photo');
+  });
+});
+
+/* ---- Porting reasons (30 + Other) ---- */
+const portingReasons = [
+  "High premium at renewal","Poor claim settlement experience","Inadequate sum insured",
+  "Room rent capping issues","Co-payment clause too high","Sub-limits on treatments",
+  "Lack of cashless hospitals nearby","Poor customer service","Slow claim processing",
+  "Waiting period too long for existing conditions","No maternity benefit","No critical illness cover",
+  "Restrictive network hospitals","No restore / refill benefit","High deductible",
+  "Daycare procedures not covered","No pre/post hospitalisation cover","No wellness / OPD benefits",
+  "Want a better claim settlement ratio insurer","Want family floater instead of individual",
+  "Want higher sum insured","Want add-on riders not currently available","Insurer discontinued or merged",
+  "Want a digital-first insurer with app support","No no-claim bonus benefit",
+  "Want lower premium for same cover","Not satisfied with insurer's rating/reputation",
+  "Want to add more members","Existing policy has exclusions I want removed",
+  "Relocated to a new city, want better local network"
+];
+const portReasonSelect = document.getElementById('portReason');
+portReasonSelect.appendChild(new Option('Select a reason',''));
+portingReasons.forEach(r=> portReasonSelect.appendChild(new Option(r,r)));
+portReasonSelect.appendChild(new Option('Other','Other'));
+portReasonSelect.addEventListener('change', ()=>{
+  document.getElementById('portReasonOtherField').classList.toggle('hidden', portReasonSelect.value !== 'Other');
+});
+
+/* ---- FAQ accordion (delegated) ---- */
+document.addEventListener('click', (e)=>{
+  const q = e.target.closest('.faq-q');
+  if(q) q.parentElement.classList.toggle('open');
+});
+
+/* ---- Generic tab wiring ---- */
+function wireTabs(tabsId, panelsContainerId){
+  document.querySelectorAll('#'+tabsId+' .tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('#'+tabsId+' .tab-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('#'+panelsContainerId+' .tab-panel').forEach(p=>p.classList.toggle('active', p.dataset.panel === btn.dataset.tab));
+    });
+  });
+}
+
+/* ---- 30+ Benefits per category ---- */
+const benefitsData = {
+  health: { intro:"How health insurance works day to day: your premium keeps a sum insured active; when hospitalisation happens, the insurer settles the bill directly with the hospital (cashless) or reimburses you, subject to the plan's terms.",
+    items:["Cashless hospitalisation at network hospitals","Pre-hospitalisation expenses (30–60 days)","Post-hospitalisation expenses (60–90 days)",
+    "No-claim bonus increases sum insured yearly","Free annual health checkup","Daycare procedures covered","Ambulance charges covered",
+    "Room rent as per plan terms","Restore benefit refills sum insured after a claim","Multiplier / cumulative bonus benefit",
+    "Maternity &amp; newborn cover (select plans)","AYUSH treatment cover","Organ donor expenses cover","Domiciliary (home) treatment cover",
+    "Mental illness treatment cover","Tax benefit under Section 80D","Family floater — one policy, whole family","Lifetime renewability",
+    "Portability across insurers without losing benefits","Wellness rewards for healthy habits","Second opinion for critical illness",
+    "Air ambulance cover (premium plans)","Consumables cover in select plans","Modern treatment methods covered",
+    "Pre-existing disease cover after waiting period","Critical illness lump sum payout option","Reduced waiting period on porting",
+    "Free look period to review the policy","Cumulative bonus even without a claim","Health checkup discount vouchers",
+    "Cover for AYUSH &amp; alternative treatments","No sub-limits in top-tier plans","Group/corporate cover options for employers",
+    "Newborn baby cover from day one (select plans)","Home nursing cover after discharge","Vaccination cover for children (select plans)"] },
+  term: { intro:"How term insurance works: you pay a small premium for a large life cover; if something happens to you during the policy term, your family receives the full sum assured — usually within days of a clean claim.",
+    items:["High life cover at low premium","Lump sum payout to nominee","Tax benefit under Section 80C","Tax-free payout under Section 10(10D)",
+    "Accidental death benefit rider","Critical illness rider","Waiver of premium on disability","Return of premium option",
+    "Increasing cover option (keeps pace with inflation)","Level cover option (fixed sum assured)","Flexible payout — lump sum, income, or combination",
+    "Cover till age 99/100 in select plans","Simplified issuance for lower sum assured","Terminal illness benefit","Accidental permanent disability rider",
+    "Spouse cover under linked policy","Child education / marriage protection rider","Loan / EMI protection cover",
+    "Flexible premium payment (monthly/yearly/single)","Convertible to a permanent life plan","Cover continues even if income reduces",
+    "Grace period for a missed premium","Free look period","Guaranteed insurability at life events","Cover for self-employed &amp; business owners",
+    "Key-man insurance for business protection","Tax-free maturity on ROP plans","Hospitalisation cash benefit rider",
+    "Quick, tax-free payout to nominee","Cover portable if you switch jobs","Protects outstanding home / personal loans",
+    "No lapse if auto-debit is maintained","Cover available up to ₹50 Crore for high-income earners","Joint life cover for you and your partner",
+    "Occupation-based customisation for field &amp; travel-heavy roles"] },
+  accident: { intro:"How personal accident cover works: it pays out specifically for accidents — death, disability, or injury — regardless of whether you also hold health or term insurance, and usually with minimal paperwork.",
+    items:["Accidental death benefit","Permanent total disability cover","Permanent partial disability cover","Temporary total disability — weekly benefit",
+    "Medical expense reimbursement for accidents","Ambulance charges cover","Hospital daily cash benefit","Children's education fund on death/disability",
+    "Fracture / broken bone cover","Burns cover","Adventure sports cover (optional)","Worldwide, 24x7 cover","Coverage on and off the job",
+    "Low premium, high sum insured","Usually no medical test required","Family cover option","Repatriation of remains cover","Funeral expense benefit",
+    "Cover for loss of limbs or eyesight","Cover for accident-induced coma","Home/vehicle modification cover post-disability",
+    "Transportation of mortal remains","Spouse / child education rider","Cover for accidental hospitalisation","No waiting period for accident claims",
+    "Renewal discount for claim-free years","Complements health &amp; term insurance","Affordable for daily-wage &amp; self-employed earners",
+    "Covers domestic accidents too, not just travel/work","Family group discounts available","Fast claim settlement with simple documentation"] },
+  general: { intro:"Insurance, at its core, is a risk-pooling tool — many people contribute a small premium so that the few who face a loss are protected. Here's why that principle matters across every policy you hold.",
+    items:["Financial protection against uncertainty","Peace of mind for you and your family","Transfers risk from individual to insurer",
+    "Encourages a disciplined savings habit","Tax benefits under the Income Tax Act","Protects against inflation in medical/emergency costs",
+    "Safeguards your family's standard of living","Prevents debt during emergencies","Builds long-term financial security",
+    "Access to cashless treatment networks","Documentation &amp; claims support","Can support loan approvals","Covers unforeseen liabilities",
+    "Reduces financial burden on family members","Enables better financial planning","Protects business continuity for the self-employed",
+    "Covers legal costs in liability cases","Protects children's education plans","Shields retirement savings from medical shocks",
+    "Risk pooling reduces individual cost burden","Access to expert advisory &amp; claim assistance","Portability &amp; flexibility across providers",
+    "Customisable coverage for every life stage","Rider options to enhance base cover","Group discounts through employer or association",
+    "Supports estate &amp; wealth-transfer planning","Protection against third-party liability","Encourages preventive healthcare habits",
+    "Reduces stress during emergencies","Some plans support long-term wealth creation","A trusted safety net across every life stage"] }
+};
+const benefitPanels = document.getElementById('benefitPanels');
+Object.keys(benefitsData).forEach((key, i)=>{
+  const d = benefitsData[key];
+  const panel = document.createElement('div');
+  panel.className = 'tab-panel' + (i===0 ? ' active' : '');
+  panel.dataset.panel = key;
+  panel.innerHTML = `<div class="benefit-intro">${d.intro}</div><div class="benefit-grid">${d.items.map(t=>`<div class="benefit-item"><span class="tick">✓</span><span>${t}</span></div>`).join('')}</div>`;
+  benefitPanels.appendChild(panel);
+});
+wireTabs('benefitTabs','benefitPanels');
+
+/* ---- Categorised FAQs ---- */
+const faqData = {
+  general: [["What is insurance and why do I need it?","Insurance is a contract where you pay a premium and the insurer pays out for specified losses — it protects your family and savings from sudden, large expenses."],
+    ["How is my premium calculated?","Premiums depend on your age, sum insured, health/lifestyle factors, and the plan's features — an advisor can show you exact quotes across insurers."],
+    ["What is a waiting period?","A waiting period is the time after buying a policy before certain conditions or benefits become claimable — it varies by insurer and plan."],
+    ["What happens if I miss a premium payment?","Most policies offer a grace period; missing it beyond that can lapse your cover, so timely renewal reminders matter."],
+    ["Can I cover my entire family under one policy?","Yes, family floater plans cover multiple members under a single sum insured, usually at a lower combined premium."],
+    ["What documents are required to buy a policy?","Typically ID proof, address proof, age proof, and sometimes income proof or medical reports depending on the plan."],
+    ["Is a medical test mandatory before buying insurance?","Not always — it depends on your age, sum insured, and the specific plan; many plans have simplified or no-test issuance."],
+    ["Can I claim tax benefits on my premium?","Yes, health and term insurance premiums are generally eligible for deductions under the Income Tax Act, subject to applicable limits."],
+    ["What is a free-look period?","A window (usually 15–30 days) after buying a policy where you can review and cancel it for a refund if it doesn't suit you."],
+    ["How do I file a claim?","You or your advisor notify the insurer, submit the required documents, and the insurer processes cashless or reimbursement claims accordingly."]],
+  health: [["What's the difference between a family floater and an individual plan?","A floater shares one sum insured across the family; an individual plan gives each member a dedicated sum insured."],
+    ["Are pre-existing diseases covered?","Yes, after a defined waiting period specified in the policy — typically a few years, varying by insurer and condition."],
+    ["What is a co-payment clause?","A percentage of the claim amount you pay out of pocket, with the insurer covering the rest — common in senior citizen plans."],
+    ["What's the difference between corporate and individual health cover?","Corporate cover ends when you leave your job and is fixed by your employer; an individual policy stays with you for life and is fully in your control."],
+    ["What is cashless treatment?","The insurer settles the bill directly with a network hospital, so you don't pay upfront and later claim reimbursement."],
+    ["What is a room rent sub-limit?","A cap on the daily room rent the insurer will pay for; exceeding it can proportionately reduce other claim amounts too."],
+    ["Can I switch my health insurer without losing benefits?","Yes, this is called porting — it lets you move insurers while carrying forward waiting period credits, subject to conditions."],
+    ["Does health insurance cover maternity?","Only plans with a specific maternity benefit or rider cover it, usually after a waiting period — ask about maternity-specific plans."]],
+  term: [["How much term cover do I need?","A common guideline is 10–15 times your annual income, adjusted for loans, dependents, and future goals."],
+    ["What happens if I outlive my term policy?","With a standard term plan, there's no maturity payout unless you chose a return-of-premium variant."],
+    ["Can I increase my cover later?","Some plans allow increasing cover at life events like marriage or childbirth without fresh medical tests."],
+    ["What is claim settlement ratio and why does it matter?","It's the percentage of claims an insurer has successfully paid out — a useful, though not sole, indicator of reliability."],
+    ["Is term insurance the same as life insurance?","Term insurance is a type of life insurance focused purely on protection, without an investment or savings component."],
+    ["Can self-employed individuals buy term insurance?","Yes, with income proof and other documentation, self-employed individuals can buy term cover just like salaried employees."],
+    ["Can I get up to ₹50 Crore of term cover?","Yes, high sum assured plans are available for eligible high-income earners, subject to income proof and underwriting."],
+    ["Does smoking affect my term insurance premium?","Yes — smokers are typically classified separately and pay a higher premium; being upfront about it avoids claim issues later."]],
+  accident: [["Does personal accident insurance cover illness?","No, it specifically covers accidental injury, disability, or death — illness is covered under health insurance instead."],
+    ["Is a medical test required for personal accident cover?","Usually not, which makes it quick to issue compared to health or term insurance."],
+    ["Does it cover accidents at home?","Yes, most personal accident plans cover accidents anywhere — at home, at work, or while travelling."],
+    ["How is it different from health insurance?","Health insurance covers medical treatment costs broadly; personal accident cover pays a defined benefit specifically for accidental injury or death."],
+    ["Can I buy personal accident cover alongside health and term insurance?","Yes — it's commonly used as an affordable add-on layer alongside your existing health and term policies."]]
+};
+const faqPanels = document.getElementById('faqPanels');
+Object.keys(faqData).forEach((key, i)=>{
+  const panel = document.createElement('div');
+  panel.className = 'tab-panel' + (i===0 ? ' active' : '');
+  panel.dataset.panel = key;
+  const list = document.createElement('div'); list.className = 'faq-list';
+  list.innerHTML = faqData[key].map(([q,a])=>`<div class="faq-item"><button class="faq-q">${q} <span class="plus">+</span></button><div class="faq-a">${a}</div></div>`).join('');
+  panel.appendChild(list);
+  faqPanels.appendChild(panel);
+});
+wireTabs('faqTabs','faqPanels');
+
+/* ---- Regional testimonials (Health 40+, Term 20+, PA 5+) ---- */
+const names = ["Ramesh","Suresh","Venkatesh","Srinivas","Krishna","Ravi","Naveen","Prasad","Mahesh","Kiran",
+  "Ganesh","Rajesh","Satish","Ramana","Vijay","Anil","Sandeep","Praveen","Ashok","Nagesh",
+  "Lakshmi","Priya","Padma","Anitha","Sowjanya","Divya","Swathi","Kavya","Sandhya","Bhavani",
+  "Sireesha","Pallavi","Madhavi","Haritha","Nagalakshmi","Vani","Deepika","Manasa","Spandana","Jyothi"];
+const regions = [
+  {c:"Hyderabad",s:"Telangana"},{c:"Secunderabad",s:"Telangana"},{c:"AS Rao Nagar",s:"Telangana"},{c:"ECIL",s:"Telangana"},
+  {c:"Kapra",s:"Telangana"},{c:"Uppal",s:"Telangana"},{c:"Kukatpally",s:"Telangana"},{c:"LB Nagar",s:"Telangana"},
+  {c:"Miyapur",s:"Telangana"},{c:"Dilsukhnagar",s:"Telangana"},{c:"Malkajgiri",s:"Telangana"},{c:"Medchal",s:"Telangana"},
+  {c:"Warangal",s:"Telangana"},{c:"Karimnagar",s:"Telangana"},{c:"Nizamabad",s:"Telangana"},{c:"Khammam",s:"Telangana"},
+  {c:"Nalgonda",s:"Telangana"},{c:"Mahbubnagar",s:"Telangana"},
+  {c:"Vijayawada",s:"Andhra Pradesh"},{c:"Visakhapatnam",s:"Andhra Pradesh"},{c:"Guntur",s:"Andhra Pradesh"},
+  {c:"Nellore",s:"Andhra Pradesh"},{c:"Kurnool",s:"Andhra Pradesh"},{c:"Rajahmundry",s:"Andhra Pradesh"},
+  {c:"Kakinada",s:"Andhra Pradesh"},{c:"Tirupati",s:"Andhra Pradesh"},{c:"Kadapa",s:"Andhra Pradesh"},
+  {c:"Anantapur",s:"Andhra Pradesh"},{c:"Chittoor",s:"Andhra Pradesh"},{c:"Eluru",s:"Andhra Pradesh"},
+  {c:"Ongole",s:"Andhra Pradesh"},{c:"Srikakulam",s:"Andhra Pradesh"},{c:"Vizianagaram",s:"Andhra Pradesh"}
+];
+const templates = {
+  health: ["Got cashless treatment within hours when I needed it most.","Helped us choose the right family floater plan for my parents' age group.",
+    "Ported our policy without losing any waiting-period benefits.","The claim support after my surgery was hands-on from start to finish.",
+    "Explained room rent limits clearly before we signed — saved us a surprise later.","Got a critical illness rider added that turned out to matter a lot.",
+    "The annual policy review caught a gap in our cover before it became a problem.","Maternity benefit was explained in detail — exactly what our family needed.",
+    "No pressure, just clear comparisons across insurers before we decided.","Helped my senior citizen parents get covered despite existing health conditions.",
+    "The whole documentation process was handled for us end to end.","Follow-up support at claim time made a stressful situation much easier.",
+    "Set up a proper group health plan for our small business team."],
+  term: ["Helped me size my cover correctly against my home loan and my children's future.","Explained claim settlement ratio clearly before recommending an insurer.",
+    "Added a critical illness rider that gives extra peace of mind.","The whole process, from proposal to policy issue, was smooth and quick.",
+    "Helped me compare level cover vs increasing cover for my situation.","As a self-employed professional, I finally got clarity on how much cover I need.",
+    "Explained the tax benefits clearly along with the protection angle.","Helped my spouse and me set up cover for both of us efficiently.",
+    "No confusing jargon — just a plan that matches our family's needs.","Reviewed my old policy and helped me top up the cover appropriately.",
+    "Answered every question patiently, even the ones I thought were silly.","Helped me understand riders I didn't know existed."],
+  accident: ["Filed my accident claim within days — the paperwork was minimal.","Affordable cover that gave real peace of mind for my daily commute.",
+    "Explained how personal accident cover complements our health policy.","Got my family covered under one simple group plan.",
+    "Quick, clear guidance when I needed cover after a minor accident scare.","Helped me understand disability cover I didn't know I needed."]
+};
+function genTestimonials(count, cat){
+  const list = [];
+  for(let i=0;i<count;i++){
+    const name = names[i % names.length];
+    const region = regions[(i*7+3) % regions.length];
+    const quote = templates[cat][(i*3+1) % templates[cat].length];
+    list.push({name, region, quote});
+  }
+  return list;
+}
+const testiData = { health: genTestimonials(42,'health'), term: genTestimonials(22,'term'), accident: genTestimonials(6,'accident') };
+const testiPanels = document.getElementById('testiPanels');
+Object.keys(testiData).forEach((key,i)=>{
+  const panel = document.createElement('div');
+  panel.className = 'tab-panel' + (i===0 ? ' active' : '');
+  panel.dataset.panel = key;
+  panel.innerHTML = `<div class="testi-mini-grid">${testiData[key].map(t=>
+    `<div class="testi-mini"><div class="stars">★★★★★</div><p>"${t.quote}"</p><div class="who">${t.name}</div><div class="loc">${t.region.c}, ${t.region.s}</div></div>`
+  ).join('')}</div>`;
+  testiPanels.appendChild(panel);
+});
+wireTabs('testiTabs','testiPanels');
+
+/* ---- Pincode auto-lookup (India Post open API), reusable ---- */
+function wirePincodeLookup(pinFieldId, areaFieldId, districtFieldId, stateFieldId){
+  const pinField = document.getElementById(pinFieldId);
+  if(!pinField) return;
+  pinField.addEventListener('blur', async function(){
+    const pin = this.value.trim();
+    if(!/^[0-9]{6}$/.test(pin)) return;
+    try{
+      const res = await fetch('https://api.postalpincode.in/pincode/' + pin);
+      const data = await res.json();
+      if(data && data[0] && data[0].Status === 'Success' && data[0].PostOffice && data[0].PostOffice.length){
+        const po = data[0].PostOffice[0];
+        document.getElementById(areaFieldId).value = po.Name || '';
+        document.getElementById(districtFieldId).value = po.District || '';
+        document.getElementById(stateFieldId).value = po.State || '';
+      } else {
+        console.warn('Pincode lookup: no match found for', pin);
+      }
+    }catch(err){ console.warn('Pincode lookup failed (network or API issue):', err); }
+  });
+}
+wirePincodeLookup('healthPincode','healthArea','healthDistrict','healthState');
+wirePincodeLookup('termPincode','termArea','termDistrict','termState');
+
+/* ---- Age calculation helper ---- */
+function calcAge(dobStr){
+  const dob = new Date(dobStr); const today = new Date();
+  let age = today.getFullYear() - dob.getFullYear();
+  const m = today.getMonth() - dob.getMonth();
+  if(m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
+  return age >= 0 ? age : '';
+}
+
+/* ---- Per-member dynamic fields (Health New Policy): DOB -> age, or manual age; health issues ---- */
+const memberContainer = document.getElementById('memberDetailsContainer');
+const memberWrap = document.getElementById('memberDetailsWrap');
+document.getElementById('healthNewMembers').addEventListener('input', function(){
+  let n = parseInt(this.value) || 0;
+  if(n > 10) n = 10;
+  memberContainer.innerHTML = '';
+  memberWrap.classList.toggle('hidden', n < 1);
+  for(let i=1;i<=n;i++){
+    const card = document.createElement('div');
+    card.className = 'member-card';
+    card.innerHTML = `
+      <div class="m-title">Member ${i}</div>
+      <div class="field-row">
+        <div class="field"><label>Date of birth</label><input type="date" id="member_${i}_dob"></div>
+        <div class="field"><label>Age <span class="opt">(auto or manual)</span></label><input type="number" id="member_${i}_age" min="0" max="120" placeholder="Age"></div>
+      </div>
+      <label class="check-item" style="margin-bottom:8px;"><input type="checkbox" id="member_${i}_manualAge"> Enter age directly instead of DOB</label>
+      <div class="field"><label>Any health issues? <span class="opt">(optional)</span></label><input type="text" id="member_${i}_health" placeholder="e.g. Diabetes, BP — leave blank if none"></div>
+    `;
+    memberContainer.appendChild(card);
+    const dobEl = card.querySelector(`#member_${i}_dob`);
+    const ageEl = card.querySelector(`#member_${i}_age`);
+    const manualEl = card.querySelector(`#member_${i}_manualAge`);
+    dobEl.addEventListener('change', ()=>{ if(!manualEl.checked && dobEl.value) ageEl.value = calcAge(dobEl.value); });
+    manualEl.addEventListener('change', ()=>{ dobEl.disabled = manualEl.checked; if(!manualEl.checked && dobEl.value) ageEl.value = calcAge(dobEl.value); });
+  }
+});
+
+/* ---- Term: DOB -> auto age ---- */
+const termDOB = document.getElementById('termDOB');
+const termAge = document.getElementById('termAge');
+termDOB.addEventListener('change', ()=>{ if(termDOB.value) termAge.value = calcAge(termDOB.value); });
+
+/* ---- Term: Nature of duty, dynamic by occupation type (Employee / Business / Self-Employed) + Other ---- */
+const dutyOptions = {
+  "Employee": ["Desk Job / Office Administration","IT / Software Professional","Sales & Marketing (Field)","Field Service / Technician",
+    "Manufacturing / Factory Floor","Healthcare Worker (Nurse/Technician)","Doctor / Medical Professional (Employed)","Teaching / Academic Staff",
+    "Government Employee","Banking / Finance Employee","Hospitality Staff","Security Personnel","Driver / Transport Staff",
+    "Construction Site Worker","Mining / Hazardous Site Worker","Defence / Police / Paramilitary","Pilot / Aviation Crew",
+    "Merchant Navy / Marine Crew","Electrician / Technical Maintenance","Warehouse / Logistics Staff"],
+  "Business": ["Shop / Retail Owner","Wholesale / Trading Business","Manufacturing Unit Owner","Restaurant / Hospitality Business",
+    "Construction / Real Estate Business","Transport / Logistics Business","IT / Software Business Owner","Import / Export Business",
+    "Agriculture / Agri-Business","Pharmacy / Medical Store Owner","Educational Institute Owner","Event Management Business",
+    "Textile / Garment Business","Jewellery Business","Automobile Dealership / Service","E-commerce Business",
+    "Consultancy / Professional Services Firm","Mining / Quarry Business","Chemical / Hazardous Materials Business"],
+  "Self-Employed / Professional": ["Doctor","Lawyer / Advocate","Chartered Accountant","Architect","Business Consultant",
+    "Freelance IT Professional","Content Creator / Media Professional","Insurance / Financial Advisor","Real Estate Agent",
+    "Interior Designer","Photographer / Videographer","Tutor / Trainer","Fitness Trainer","Artist / Musician","Independent Contractor"]
+};
+const termOccupationType = document.getElementById('termOccupationType');
+const termDuty = document.getElementById('termDuty');
+const termDutyOtherField = document.getElementById('termDutyOtherField');
+termOccupationType.addEventListener('change', ()=>{
+  const list = dutyOptions[termOccupationType.value] || [];
+  termDuty.innerHTML = '';
+  termDuty.appendChild(new Option('Select one',''));
+  list.forEach(item => termDuty.appendChild(new Option(item, item)));
+  termDuty.appendChild(new Option('Other','Other'));
+  termDutyOtherField.classList.add('hidden');
+});
+termDuty.addEventListener('change', ()=>{
+  termDutyOtherField.classList.toggle('hidden', termDuty.value !== 'Other');
+});
+
+/* ---- Term: Smoker Yes/No -> frequency + quantity ---- */
+const termSmoker = document.getElementById('termSmoker');
+const termSmokeFields = document.getElementById('termSmokeFields');
+termSmoker.addEventListener('change', ()=>{
+  termSmokeFields.classList.toggle('hidden', termSmoker.value !== 'Yes');
+});
+
+/* ---- Show/hide top-level conditional sections ---- */
+const interestSelect = document.getElementById('interest');
+const healthBlock = document.getElementById('healthBlock');
+const termBlock = document.getElementById('termBlock');
+const healthType = document.getElementById('healthType');
+const healthNewFields = document.getElementById('healthNewFields');
+const healthPortFields = document.getElementById('healthPortFields');
+const healthCoverType = document.getElementById('healthCoverType');
+const groupFields = document.getElementById('groupFields');
+const portClaims = document.getElementById('portClaims');
+const portClaimDetailsField = document.getElementById('portClaimDetailsField');
+const termExisting = document.getElementById('termExisting');
+const termExistingFields = document.getElementById('termExistingFields');
+
+function toggle(el, show){ el.classList.toggle('hidden', !show); }
+
+interestSelect.addEventListener('change', ()=>{
+  const v = interestSelect.value;
+  toggle(healthBlock, v === 'Health Insurance');
+  toggle(termBlock, v === 'Term Insurance');
+  if(v !== 'Health Insurance'){ healthType.value=''; toggle(healthNewFields,false); toggle(healthPortFields,false); }
+  if(v !== 'Term Insurance'){ termExisting.value=''; toggle(termExistingFields,false); }
+});
+healthType.addEventListener('change', ()=>{
+  toggle(healthNewFields, healthType.value === 'new');
+  toggle(healthPortFields, healthType.value === 'porting');
+});
+healthCoverType.addEventListener('change', ()=> toggle(groupFields, healthCoverType.value === 'Group'));
+portClaims.addEventListener('change', ()=> toggle(portClaimDetailsField, portClaims.value === 'Yes'));
+termExisting.addEventListener('change', ()=> toggle(termExistingFields, termExisting.value === 'Yes'));
+
+/* ---- Thank-you modal ---- */
+const modal = document.getElementById('thankYouModal');
+document.getElementById('modalCloseBtn').addEventListener('click', ()=> modal.classList.remove('show'));
+modal.addEventListener('click', (e)=>{ if(e.target === modal) modal.classList.remove('show'); });
+
+/* =========================================================================
+   LEAD FORM SUBMIT — backend save
+   GitHub Pages only serves static files, so it cannot write an .xlsx file
+   to disk by itself. The standard free way to turn a GitHub-hosted form
+   into a spreadsheet is:
+     1. Open Google Sheets, create a new sheet.
+     2. Extensions -> Apps Script -> paste the contents of apps-script/Code.gs
+        from this project.
+     3. Deploy as a Web App (Execute as: Me, Access: Anyone), copy the URL
+        into GOOGLE_SCRIPT_URL below.
+     4. Download the Google Sheet as .xlsx any time via File -> Download.
+   Until GOOGLE_SCRIPT_URL is set, submissions validate and show the
+   thank-you message, but are only logged to the console for testing.
+========================================================================= */
+const GOOGLE_SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+
+const form = document.getElementById('leadFormInner');
+const submitBtn = document.getElementById('submitBtn');
+const val = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+const checked = id => { const el = document.getElementById(id); return el ? el.checked : false; };
+
+function collectMemberDetails(){
+  const n = parseInt(val('healthNewMembers')) || 0;
+  const arr = [];
+  for(let i=1;i<=n;i++){
+    arr.push({ member: i, dob: val(`member_${i}_dob`), age: val(`member_${i}_age`), health_issues: val(`member_${i}_health`) });
+  }
+  return arr;
+}
+
+form.addEventListener('submit', async function(e){
+  e.preventDefault();
+
+  const phone = val('phone');
+  if(!/^[0-9]{10}$/.test(phone)){ alert('Please enter a valid 10-digit mobile number.'); return; }
+  const interest = val('interest');
+  if(interest === 'Health Insurance' && !val('healthType')){ alert('Please select New Policy or Porting.'); return; }
+  if(interest === 'Health Insurance' && val('healthType') === 'new' && val('healthCoverType') === 'Group'){
+    if(!val('groupCompanyName') || !val('groupLocation') || !val('groupEmployeeCount')){
+      alert('For Group cover, company name, location and employee count are required.'); return;
+    }
+  }
+  if(interest === 'Term Insurance' && !val('termCoverage')){ alert('Please select the coverage amount you are looking for.'); return; }
+
+  const record = {
+    timestamp: new Date().toISOString(),
+    name: val('name'), phone: phone, alt_phone: val('altPhone'),
+    call_available: checked('callAvailable') ? 'Yes' : 'No',
+    whatsapp_available: checked('whatsappAvailable') ? 'Yes' : 'No',
+    area: val('area'), interest: interest, callback: val('callback'),
+    // Health — general
+    health_company: val('healthCompany'), health_type: val('healthType'),
+    // Health — new policy
+    health_package: val('healthPackage'), health_new_members: val('healthNewMembers'),
+    health_cover_type: val('healthCoverType'), health_member_details: JSON.stringify(collectMemberDetails()),
+    group_company_name: val('groupCompanyName'), group_location: val('groupLocation'),
+    group_employee_count: val('groupEmployeeCount'), group_sum_insured: val('groupSumInsured'),
+    group_employee_type: val('groupEmployeeType'),
+    health_address: val('healthAddress'), health_pincode: val('healthPincode'),
+    health_area: val('healthArea'), health_district: val('healthDistrict'), health_state: val('healthState'),
+    health_timeline: val('healthTimeline'), health_preferred_date: val('healthPreferredDate'),
+    // Health — porting
+    port_current_policy: val('portCurrentPolicy'), port_sum_insured: val('portSumInsured'),
+    port_package: val('portPackage'), port_members: val('portMembers'), port_claims: val('portClaims'),
+    port_claim_details: val('portClaimDetails'),
+    port_reason: val('portReason') === 'Other' ? val('portReasonOther') : val('portReason'),
+    port_expiry: val('portExpiry'), port_has_document: val('portHasDocument'),
+    // Term
+    term_coverage: val('termCoverage'), term_readiness: val('termReadiness'), term_for: val('termFor'),
+    term_dob: val('termDOB'), term_age: val('termAge'),
+    term_pincode: val('termPincode'), term_area: val('termArea'), term_district: val('termDistrict'), term_state: val('termState'),
+    term_occupation_type: val('termOccupationType'),
+    term_duty: val('termDuty') === 'Other' ? val('termDutyOther') : val('termDuty'),
+    term_income: val('termIncome'), term_itr: val('termITR'), term_vaccine: val('termVaccine'), term_checkup: val('termCheckup'),
+    term_smoker: val('termSmoker'), term_smoke_frequency: val('termSmokeFreq'), term_smoke_quantity: val('termSmokeQty'),
+    term_existing: val('termExisting'), term_existing_company: val('termExistingCompany'), term_existing_sum: val('termExistingSum')
+  };
+
+  submitBtn.disabled = true; submitBtn.textContent = 'Submitting...';
+  try{
+    if(GOOGLE_SCRIPT_URL && !GOOGLE_SCRIPT_URL.startsWith('PASTE_')){
+      await fetch(GOOGLE_SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body: JSON.stringify(record) });
+    } else {
+      console.log('Lead captured (backend not configured yet):', record);
+    }
+  } catch(err){ console.warn('Could not reach backend, lead was not saved remotely:', err); }
+
+  document.getElementById('thankYouText').textContent =
+    'Thanks, ' + (record.name.split(' ')[0] || 'there') + '! Your request has been received. A licensed advisor will get back to you — ' + (record.callback || 'soon') + '.';
+  modal.classList.add('show');
+
+  submitBtn.disabled = false; submitBtn.textContent = 'Request my free call back';
+  form.reset();
+  memberContainer.innerHTML = ''; toggle(memberWrap,false);
+  toggle(healthBlock,false); toggle(termBlock,false);
+  toggle(healthNewFields,false); toggle(healthPortFields,false); toggle(groupFields,false);
+  toggle(portClaimDetailsField,false); toggle(termExistingFields,false);
+  toggle(document.getElementById('portReasonOtherField'),false);
+  toggle(termSmokeFields,false); toggle(termDutyOtherField,false);
+  termDuty.innerHTML = '<option value="">Select occupation type first</option>';
+});
+
+</script>
+</body>
+</html>
